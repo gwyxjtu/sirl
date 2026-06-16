@@ -1,0 +1,36 @@
+# ===== 模型权重 & Tokenizer =====
+Qwen*/
+SIRL-Gurobi/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+
+# ===== 训练产物 =====
+checkpoints/
+outputs/
+log/
+*.log
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+Untitled

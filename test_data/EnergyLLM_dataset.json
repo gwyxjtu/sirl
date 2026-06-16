@@ -1,0 +1,1729 @@
+[
+  {
+    "id": 1,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shandong Province, China. The system will incorporate equipment such as solar collectors, gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,200 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 800 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (thermal efficiency of 0.92, minimum installed capacity of (g_gb_inst)500 kW, unit price of 1000 yuan/ kW, service life of 15 years, efficiency of 0.95), ground-source heat pumpheating COP is adjusted to 3.8",
+    "en_answer": "3075844",
+    "en_variable": {
+      "pv_inst": 9937.791058754183,
+      "sc_inst": 0.0,
+      "gb_inst": 1270.7032316396908,
+      "ghp_inst": 254.6248737101559,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 2,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, electrolyzers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,500 kW, the peak heating load stands at 1,000 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Remove electric boiler, photovoltaic panel is set at minimum installed capacity of 1000 kW, air-source heat pumpcooling COP is increased to 3.8",
+    "en_answer": "5716687",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 5.090814107980194e-08,
+      "el_inst": 0.0,
+      "hp_inst": 630.2631578947696,
+      "tank_inst": 9999.99999999878
+    }
+  },
+  {
+    "id": 3,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Heilongjiang Province, China. The system will incorporate equipment such as chillers, fuel cells, ground-source heat pumps, hot water tanks, and photovoltaic panels. This energy system allows purchasing hydrogen. The annual peak cooling load of the system reaches 800 kW, the peak heating load stands at 3,500 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. chillerCOP is increased to 8.0, ground-source heat pumpheating COP is fine-tuned to 3.7",
+    "en_answer": "5087165",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 907.7423828779041,
+      "ghp_inst": 555.4201424430762,
+      "ch_inst": 45.306315110187555,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 4,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Shaanxi Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, gas-fired boilers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (8000 kW upper limit(g_gb_inst), unit price of 1000 yuan/ kW, service life of 15 years, efficiency of 0.95), air-source heat pumpheating COP is increased to 2.5, cooling COP is increased to 3.7",
+    "en_answer": "6500473",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 8.902319188612507e-09,
+      "gb_inst": 701.3925508441198,
+      "hp_inst": 700.9238254500937,
+      "tank_inst": 9999.999999998887
+    }
+  },
+  {
+    "id": 5,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Hainan Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, ground-source heat pumps, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid. The annual peak cooling load of the system reaches 2,800 kW, the peak heating load stands at 700 kW, and the peak electrical load is 1,900 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.6 to 1.4 yuan/kWh. The hydrogen purchase price is 21 yuan/kg and the selling price is 15.0 yuan/kg. Remove hydrogen storage tank, photovoltaic panelupper capacity limit of is reduced to 8000 kW, ground-source heat pumpcooling COP is increased to 4.8",
+    "en_answer": "8524944",
+    "en_variable": {
+      "pv_inst": 8000.0,
+      "sc_inst": 39.423607072968345,
+      "hp_inst": 202.62644164454605,
+      "ghp_inst": 434.8203885327784,
+      "tank_inst": 9999.913568883303
+    }
+  },
+  {
+    "id": 6,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Sichuan Province, China. The system will incorporate equipment such as chillers, fuel cells, ground-source heat pumps, hot water tanks, and photovoltaic panels. This energy system allows selling electricity to the power grid and purchasing hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,000 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. fuel cell (500 kWh lower limit), ground-source heat pump is set at 1000 kW lower limit, chillerCOP is increased to 4.8",
+    "en_answer": "6060386",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 1178.1398703935126,
+      "ghp_inst": 1000.0,
+      "ch_inst": 86.08932299042463,
+      "tank_inst": 0.0
+    }
+  },
+  {
+    "id": 7,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Liaoning Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, gas-fired boilers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.35 to 1.15 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (minimum installed capacity of 500 kW(g_gb_inst), unit price of 1000 yuan/ kW, service life of 15 years, efficiency of 0.95), electrolyzerupper capacity limit of is reduced to 8000 kW, air-source heat pumpcooling COP is increased to 3.6",
+    "en_answer": "4731155",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0003066409601428354,
+      "gb_inst": 1370.5542662945727,
+      "hp_inst": 421.875378217811,
+      "tank_inst": 9999.999991399052
+    }
+  },
+  {
+    "id": 8,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Zhejiang Province, China. The system will incorporate equipment such as solar collectors, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.0 yuan/kg. Remove electrolyzer, photovoltaic panelconversion efficiency is increased to 0.25, ground-source heat pumpheating COP3.9/cooling COP4.7",
+    "en_answer": "5678756",
+    "en_variable": {
+      "pv_inst": 7815.439336097677,
+      "sc_inst": 0.0,
+      "ghp_inst": 360.6382978723404,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 9,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Gansu Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 1,000 kW, the peak heating load stands at 3,200 kW, and the peak electrical load is 700 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 15.0 yuan/kg. chiller is set at 800 kW lower limit and COP is increased to 5.2",
+    "en_answer": "5174538",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "hst_inst": 102.8161429740518,
+      "el_inst": 576.7465255528675,
+      "fc_inst": 867.3984778947615,
+      "ghp_inst": 526.5952860804335,
+      "tank_inst": 10000.0,
+      "ch_inst": 800.0
+    }
+  },
+  {
+    "id": 10,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shaanxi Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, gas-fired boilers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (500-8000 kW)(g_gb_inst)unit price of 1000 yuan/ kW, service life of 15 years, efficiency of 0.95. air-source heat pump is set at 1000 kW lower limit, cooling COP is increased to 3.8",
+    "en_answer": "3175232",
+    "en_variable": {
+      "pv_inst": 8045.982940474086,
+      "el_inst": 0.0,
+      "gb_inst": 500.0,
+      "hp_inst": 1000.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 11,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Beijing, China. The system will incorporate equipment such as solar collectors, fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new battery storage (500 kWh lower limit)(p_bs_inst)unit price of 500 yuan/ kWh,service life of 10 years, charge/discharge efficiency0.95, charge/discharge power rate0.5c. ground-source heat pumpheating COP is increased to 3.8, cooling COP is increased to 4.8",
+    "en_answer": "6139454",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.0,
+      "fc_inst": 701.3487080227017,
+      "el_inst": 0.0,
+      "ghp_inst": 353.125,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "bs_inst": 6365.088846231063
+    }
+  },
+  {
+    "id": 12,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shanghai, China. The system will incorporate equipment such as cold water tanks, photovoltaic panels, air-source heat pumps, and electrolyzers. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (500-8000 kW)unit price of 1000 yuan/ kW, service life of 15 years, photovoltaic panel is set at 1000 kW lower limit and 2000 kW upper limitair-source heat pump冷heating COP respectively is increased to 2.5/3.7",
+    "en_answer": "5532260",
+    "en_variable": {
+      "pv_inst": 2000.0,
+      "el_inst": 8.41988943855336e-10,
+      "hp_inst": 599.9999999994058,
+      "tank_inst": 9999.999999997946
+    }
+  },
+  {
+    "id": 13,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, fuel cells, electrolyzers, chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 2,800 kW, the peak heating load stands at 800 kW, and the peak electrical load is 1,900 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.6 to 1.4 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 15.0 yuan/kg. chillerCOP is increased to 5.0, air-source heat pumpcooling COP保持3.5",
+    "en_answer": "17173721",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.0,
+      "fc_inst": 2249.7933572189313,
+      "el_inst": 0.0,
+      "hp_inst": 47.29691645068942,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 505.8921584845174
+    }
+  },
+  {
+    "id": 14,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Heilongjiang Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 700 kW, the peak heating load stands at 3,500 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. ground-source heat pump is set at 1000 kW lower limit, heating COP is adjusted to 3.7",
+    "en_answer": "5155051",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 907.7423828779041,
+      "el_inst": 731.6496252197726,
+      "ghp_inst": 1000.0,
+      "hst_inst": 141.188645248367,
+      "tank_inst": 10000.0,
+      "ch_inst": 0.0
+    }
+  },
+  {
+    "id": 15,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Sichuan Province, China. The system will incorporate equipment such as solar collectors, electrolyzers, ground-source heat pumps, gas-fired boilers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas-fired boiler (thermal efficiency of 0.92, minimum installed capacity of 500 kW, unit price of 1000 yuan/ kW, service life of 15 years, efficiency of 0.95), photovoltaic panel efficiency of is increased to 0.23, ground-source heat pumpcooling COP is adjusted to 4.7",
+    "en_answer": "5042068",
+    "en_variable": {
+      "pv_inst": 8272.165554190564,
+      "sc_inst": 0.0,
+      "el_inst": 0.0,
+      "gb_inst": 1091.9671881595252,
+      "ghp_inst": 318.08510638297867,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 16,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Xinjiang Uyghur Autonomous Region, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 900 kW, the peak heating load stands at 3,200 kW, and the peak electrical load is 700 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.35 to 1.15 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. chiller is set at 800 kW lower limit, COP is increased to 5.2",
+    "en_answer": "3062742",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 850.1420638016576,
+      "el_inst": 877.387418581062,
+      "ghp_inst": 555.0838021677375,
+      "hst_inst": 152.10041662151085,
+      "tank_inst": 10000.0,
+      "ch_inst": 800.0
+    }
+  },
+  {
+    "id": 17,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Hubei Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, fuel cells, electrolyzers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. 增加battery storage设备p_bs (0-1000 kWh), unit price of 500 yuan/ kWh,service life of 10 years, charge/discharge efficiency0.95, charge/discharge power rate0.5cair-source heat pump冷heating COP respectively is increased to 2.8/3.9",
+    "en_answer": "2829403",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.0,
+      "fc_inst": 0.0,
+      "el_inst": 298.372095259947,
+      "hp_inst": 544.2595287444157,
+      "tank_inst": 10000.0,
+      "bs_inst": 1000.0
+    }
+  },
+  {
+    "id": 18,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Yunnan Province, China. The system will incorporate equipment such as cold water tanks, hydrogen storage tanks, photovoltaic panels, and ground-source heat pumps. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,200 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 800 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. ground-source heat pump is set at 1000 kW lower limit, cooling COP is adjusted to 4.6",
+    "en_answer": "4078751",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "ghp_inst": 1000.0,
+      "hst_inst": 0.0,
+      "tank_inst": 9999.999999998254
+    }
+  },
+  {
+    "id": 19,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shaanxi Province, China. The system will incorporate equipment such as solar collectors, chillers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,500 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Remove electrolyzer, photovoltaic panel is set at 1000 kW lower limit8000 kW upper limit, chillerCOP is increased to 4.9",
+    "en_answer": "4065403",
+    "en_variable": {
+      "pv_inst": 6218.005473323067,
+      "sc_inst": 0.0,
+      "ghp_inst": 528.2485875706215,
+      "ch_inst": 99.3026140529473,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 20,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shaanxi Province, China. The system will incorporate equipment such as solar collectors, chillers, gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,500 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Remove electrolyzer, photovoltaic panel is set at 1000 kW lower limit8000 kW upper limit, chillerCOP is increased to 4.9, Additionally, new gas-fired boiler (燃料 is 天然气, 制thermal efficiency of 0.9, service life of 15 years, unit price of 3000 yuan/ kW)",
+    "en_answer": "4065403",
+    "en_variable": {
+      "pv_inst": 6218.005473323067,
+      "sc_inst": 0.0,
+      "ghp_inst": 528.2485875706215,
+      "gb_inst": 0.0,
+      "ch_inst": 99.3026140529473,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 21,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Jiangsu Province, China. The system will incorporate equipment such as solar collectors, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and purchasing hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 20,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. photovoltaic panelinstalled capacity is set at 2000 kW lower limit10000 kW upper limit, conversion efficiency is increased to 0.22；ground-source heat pumpheating COP is adjusted to 4.0, cooling COP is adjusted to 5.0；electrolyzer efficiency of is increased to 0.72",
+    "en_answer": "-807579771",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 140.77249844072742,
+      "el_inst": 10000.0,
+      "ghp_inst": 388.71201368729123,
+      "hst_inst": 0.0,
+      "tank_inst": 9999.88635577968
+    }
+  },
+  {
+    "id": 22,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Fujian Province, China. The system will incorporate equipment such as air-source heat pumps, chillers, fuel cells, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 1,200 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.55 to 1.35 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. air-source heat pumpheating COP is adjusted to 2.8, cooling COP is adjusted to 4.0；chillerCOP is increased to 5.5；fuel cellpower generation efficiency is increased to 0.55, installed capacity的范围是500-3000 kW",
+    "en_answer": "7413060",
+    "en_variable": {
+      "pv_inst": 9999.999585497737,
+      "fc_inst": 500.0,
+      "hp_inst": 92.33681443627985,
+      "ch_inst": 313.75504408824816,
+      "tank_inst": 9999.99999938246
+    }
+  },
+  {
+    "id": 23,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Hebei Province, China. The system will incorporate equipment such as gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 8,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. gas-fired boiler装机1000-5000 kW, thermal efficiency of is increased to 0.96；ground-source heat pumpheating COP is adjusted to 3.9, upper capacity limit of is set at is 2000 kW；photovoltaic panellower capacity limit of 500 kW",
+    "en_answer": "4663757",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "gb_inst": 1000.0,
+      "ghp_inst": 370.1858922678828,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 24,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Jilin Province, China. The system will incorporate equipment such as solar collectors, fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 600 kW, the peak heating load stands at 3,800 kW, and the peak electrical load is 550 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.32 to 1.12 yuan/kWh. The hydrogen purchase price is 17.5 yuan/kg and the selling price is 13.0 yuan/kg. hydrogen storage tank容量 upper limit is adjusted to 500 kg, 储氢 efficiency of 0.98；fuel celllower capacity limit of 800 kW, power generation efficiency0.52；electrolyzer装机2000-8000 kW",
+    "en_answer": "79016393",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 2101.5453206932134,
+      "fc_inst": 800.0,
+      "el_inst": 2000.0,
+      "ghp_inst": 133.33333333333334,
+      "ch_inst": 0.0,
+      "hst_inst": 142.31898978047462,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 25,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Hunan Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,350 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. hot water tank容量 upper limit is adjusted to 8000 kWh, 储thermal efficiency of 0.96；cold water tank容量 upper limit is adjusted to 6000 kWh, 储冷 efficiency of 0.95；air-source heat pump装机1500-4000 kW",
+    "en_answer": "4912359",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.198026230382138,
+      "hp_inst": 1500.0001459373175,
+      "tank_inst": 9999.990674796374
+    }
+  },
+  {
+    "id": 26,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shanxi Province, China. The system will incorporate equipment such as hot water tanks, electrolyzers, ground-source heat pumps, micro gas turbines, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new micro gas turbinep_mgt (燃料 is 天然气, power generation efficiency0.35, waste heat recovery efficiency of 0.45, 装机200-2000 kW, unit price of 8000 yuan/ kW, service life of 20 years, 天然气价格3.0元/m³, 热值9.7 kWh/m³)",
+    "en_answer": "4196228",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 477.53956661012853,
+      "ghp_inst": 421.3422923788843,
+      "mgt_inst": 301.73145695075124,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 27,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Anhui Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, fuel cells, hot water tanks, cold water tanks, lithium bromide absorption chillers, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,100 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new lithium bromide absorption chillerp_lbac (热源 is 热水, 热转cooling COP is 1.3, 装机500-3000 kW, unit price of 4500 yuan/ kW, service life of 15 years), solar collector is 其提供热源",
+    "en_answer": "4475923",
+    "en_variable": {
+      "pv_inst": 9999.999648881805,
+      "fc_inst": 131.89711599398913,
+      "sc_inst": 2374.409760171453,
+      "hp_inst": 453.9584251495157,
+      "tank_inst": 9999.999731073842,
+      "abc_inst": 500.0000286042993
+    }
+  },
+  {
+    "id": 28,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Jiangxi Province, China. The system will incorporate equipment such as air-source heat pumps, ice storage systems, gas-fired boilers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new ice storage systemp_ice (电制cooling COP is 4.0, 蓄冰 efficiency of 0.92, 融冰 efficiency of 0.95, 蓄冰容量 upper limit5000 kWh, 制冷功率 upper limit1500 kW, unit price of 3500 yuan/ kWh, service life of 12 years), 利用夜间低谷电价蓄冰",
+    "en_answer": "6808071",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "gb_inst": 649.5358796815647,
+      "hp_inst": 549.3387624518869,
+      "tank_inst": 10000.0,
+      "ice_inst": 0.0
+    }
+  },
+  {
+    "id": 29,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Guizhou Province, China. The system will incorporate equipment such as water-source heat pumps, electrolyzers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,100 kW, the peak heating load stands at 1,900 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new water-source heat pumpp_wshp (热源 is 地下水, heating COP is 4.5, cooling COP is 5.5, 装机500-2500 kW, unit price of 5000 yuan/ kW, service life of 18 years), 替代原有ground-source heat pump",
+    "en_answer": "4127925",
+    "en_variable": {
+      "pv_inst": 7556.258122937212,
+      "el_inst": 1.4976791200638916e-08,
+      "wshp_inst": 500.0,
+      "hst_inst": 2.291096016862074e-07,
+      "tank_inst": 9999.999999998778
+    }
+  },
+  {
+    "id": 30,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Chongqing, China. The system will incorporate equipment such as hydrogen storage tanks, fuel cells, ground-source heat pumps, hot water tanks, cold water tanks, electric boilers, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and purchasing hydrogen. The annual peak cooling load of the system reaches 2,300 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 1,700 kW, with the building covering a floor area of 19,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Additionally, new electric boilerp_eb (电转thermal efficiency of 0.98, 装机300-2000 kW, unit price of 800 yuan/ kW, service life of 20 years), for峰谷电价差套利 and 辅助供热",
+    "en_answer": "8108877",
+    "en_variable": {
+      "pv_inst": 9992.411966597643,
+      "fc_inst": 5.847406051812702,
+      "hst_inst": 13.210218971745993,
+      "eb_inst": 300.00421529336063,
+      "ghp_inst": 487.7798522218293,
+      "tank_inst": 9999.939917295138
+    }
+  },
+  {
+    "id": 31,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, high-temperature heat pumps, fuel cells, electrolyzers, double-effect absorption chillers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,500 kW, the peak heating load stands at 900 kW, and the peak electrical load is 1,800 kW, with the building covering a floor area of 20,000 square meters. The time-of-use electricity prices range from 0.6 to 1.45 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new 能量平衡: high-temperature heat demand, 高温热负荷constant is 150 kW. Additionally, new high-temperature heat pumpp_hhp (热源 is 电, 输出高温热, heating COP is 2.2, 装机100-1000 kW, unit price of 4500 yuan/ kW, service life of 12 years), 只有high-temperature heat pump可以满足high-temperature heat demand. Additionally, new double-effect absorption chillerp_dac (消耗高温热制冷, 热转cooling COP is 1.4, 装机500-2000 kW, unit price of 5500 yuan/ kW, service life of 15 years)",
+    "en_answer": "6705189",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "fc_inst": 3.020098192194578,
+      "hp_inst": 447.89599825943776,
+      "hhp_inst": 100.0,
+      "dac_inst": 1114.7208795490076,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 32,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Tianjin, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, steam absorption chillers, cold water tanks, photovoltaic panels, and steam generators. This energy system allows purchasing electricity from the power grid, buying and selling hydrogen, and purchasing steam. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Steam can be purchased at 180.0 yuan/ton. Additionally, new 能量平衡: steam能量. Additionally, new steam generatorp_sg (电转steam efficiency of 0.92, 装机200-1500 kW, unit price of 3000 yuan/ kW, service life of 15 years). Additionally, new steam absorption chillerp_sac (steam转cooling COP is 1.5, 装机500-2500 kW, unit price of 5000 yuan/ kW, service life of 12 years). steam可以外购, 价格180 yuan/ton",
+    "en_answer": "5653940",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 108.62292353912287,
+      "ghp_inst": 443.50282485875704,
+      "sg_inst": 200.0,
+      "sac_inst": 500.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 33,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Hebei Province, China. The system will incorporate equipment such as electrolyzers, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Additionally, new wind turbinep_wt (装机500-5000 kW, unit price of 6000 yuan/ kW, service life of 25 years, capacity factor0.25, 风电出力曲线需要根据当地风资源数据给定), 与photovoltaic panel配合实现wind-solar complementary发电",
+    "en_answer": "1909068",
+    "en_variable": {
+      "pv_inst": 4789.592884652489,
+      "wt_inst": 5000.0,
+      "el_inst": 686.3526786349164,
+      "ghp_inst": 693.8136089418176,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 34,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Beijing, China. The system will incorporate equipment such as electric thermal storage devices, fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 500 kW, the peak heating load stands at 4,200 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 16.0 yuan/kg and the selling price is 12.0 yuan/kg. Additionally, new electric thermal storage devicep_esh (电转thermal efficiency of 0.95, 蓄thermal efficiency of 0.92, thermal storage capacity upper limit10000 kWh, 充放热功率 upper limit2000 kW, unit price of 600 yuan/ kWh, service life of 15 years), 利用低谷电价蓄热",
+    "en_answer": "4034503",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 1024.5694884581485,
+      "el_inst": 647.764884579417,
+      "hst_inst": 109.31311029917093,
+      "esh_inst": 58.487942814260606,
+      "ghp_inst": 742.5472918867783,
+      "tank_inst": 10000.0,
+      "ch_inst": 0.0
+    }
+  },
+  {
+    "id": 35,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Liaoning Province, China. The system will incorporate equipment such as waste heat recovery units, chillers, electrolyzers, gas-fired boilers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.36 to 1.16 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new waste heat recovery unitp_whr (回收fuel cell余热, 热recovery efficiency0.65, 装机与fuel cell配套, unit price of 1500 yuan/ kW, service life of 12 years). 需增加fuel cellfor产生可回收余热, fuel cell装机500-2000 kW",
+    "en_answer": "5850250",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "gb_inst": 1320.9155934897165,
+      "tank_inst": 10000.0,
+      "ch_inst": 337.5003022373123,
+      "fc_inst": 500.0,
+      "whr_inst": 452.8333333333333,
+      "hst_inst": 0.0
+    }
+  },
+  {
+    "id": 36,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Beijing, China. The system will incorporate equipment such as fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 2,500 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加demand charge. 用户需要考虑电力demand charge, 每 month买电峰值功率 (max(p_grid_buy))需要按照demand charge计价, 需量电价 is 38 yuan/ kW/ month. 优化时需要平衡降低峰值买电功率 and 总用电成本",
+    "en_answer": "4749027",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 38.93036131112012,
+      "el_inst": 61.36693787681742,
+      "ghp_inst": 593.8346703130139,
+      "hst_inst": 8.31493122775267,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 37,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shanghai, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,700 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加fuel cellO&M cost. fuel cell每消耗1 kg氢气需要产生1.5元的O&M cost (包括催化剂损耗、维护等), 此成本需要计入目标函数中的运行成本",
+    "en_answer": "8335446",
+    "en_variable": {
+      "pv_inst": 9999.999121921963,
+      "fc_inst": 11.954334165668838,
+      "hst_inst": 1.1340185757223409,
+      "hp_inst": 725.036690642638,
+      "tank_inst": 9999.99905453836
+    }
+  },
+  {
+    "id": 38,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 2,600 kW, the peak heating load stands at 1,200 kW, and the peak electrical load is 1,900 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.58 to 1.4 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加carbon emission cost. 买电的碳排放因子 is 0.5 kg CO2/ kWh, gas-fired boiler燃烧天然气的碳排放因子 is 2.0 kg CO2/m³, carbon price is 80 yuan/tonCO2. 需要在目标函数中增加carbon emission cost",
+    "en_answer": "11935433",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "ghp_inst": 554.4444444444445,
+      "gb_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 39,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Zhejiang Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, chillers, electrolyzers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,000 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加设备启停成本. air-source heat pump每次启动产生5元启动成本, chiller每次启动产生10元启动成本, 需要在目标函数中考虑设备启停次数的成本影响",
+    "en_answer": "5196668",
+    "en_variable": {
+      "pv_inst": 9445.080400556826,
+      "sc_inst": 0.0,
+      "el_inst": 0.0,
+      "hp_inst": 691.0172563052556,
+      "ch_inst": 178.12712437609713,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 40,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Jiangsu Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Objective function modification: : 增加photovoltaic消纳考核. photovoltaic发电量中若有solar curtailment (curtailment), 每弃1 kWh需要支付0.1元的penalty cost. 目标函数需要考虑solar curtailment成本, 鼓励提高photovoltaic利用率",
+    "en_answer": "4102337",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "ghp_inst": 458.00042586455686,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 41,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shandong Province, China. The system will incorporate equipment such as hot water tanks, fuel cells, electrolyzers, ground-source heat pumps, micro gas turbines, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Combined modification: : Additionally, new micro gas turbinep_mgt (power generation efficiency0.33, waste heat recovery efficiency of 0.48, 装机300-2500 kW, unit price of 7500 yuan/ kW, service life of 18 years)；同时考虑demand charge, 需量电价35 yuan/ kW/ month；ground-source heat pumpheating COP is increased to 4.2",
+    "en_answer": "4700510",
+    "en_variable": {
+      "p_pur_max": 1159.0713830761774,
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 62.806149880746545,
+      "ghp_inst": 354.44444444444446,
+      "mgt_inst": 432.4892354923898,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 42,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Sichuan Province, China. The system will incorporate equipment such as air-source heat pumps, high-temperature heat pumps, electrolyzers, double-effect absorption chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,100 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Combined modification: : Additionally, new high-temperature heat demand (constant120 kW), Additionally, new high-temperature heat pumpp_hhp (heating COP is 2.0, 装机80-800 kW, unit price of 4200 yuan/ kW)；Additionally, new double-effect absorption chillerp_dac (热转cooling COP is 1.35)；fuel cellO&M cost1.2 yuan/ kg氢气",
+    "en_answer": "5450357",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "hp_inst": 501.9678957540519,
+      "hhp_inst": 80.0,
+      "dac_inst": 798.6664618936333,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 43,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Heilongjiang Province, China. The system will incorporate equipment such as electric thermal storage devices, fuel cells, electrolyzers, chillers, wind turbines, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 400 kW, the peak heating load stands at 4,500 kW, and the peak electrical load is 500 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 16.5 yuan/kg and the selling price is 12.5 yuan/kg. Combined modification: : off-grid运行 (不允许买卖电)；Additionally, new wind turbinep_wt (装机500-3000 kW, capacity factor0.28)；Additionally, new electric thermal storage devicep_esh (thermal storage capacity upper limit12000 kWh)；photovoltaic装机2000 kW lower limit",
+    "en_answer": "-806186",
+    "en_variable": {
+      "pv_inst": 2000.0,
+      "wt_inst": 3000.0,
+      "fc_inst": 0.0,
+      "el_inst": 690.1989684624227,
+      "ghp_inst": 0.0,
+      "hst_inst": 0.0,
+      "tank_inst": 0.0,
+      "ch_inst": 88.88888888888889,
+      "esh_inst": 12000.0
+    }
+  },
+  {
+    "id": 44,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Hainan Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, ice storage systems, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 3,200 kW, the peak heating load stands at 600 kW, and the peak electrical load is 2,200 kW, with the building covering a floor area of 22,000 square meters. The time-of-use electricity prices range from 0.62 to 1.48 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. Combined modification: : Additionally, new ice storage systemp_ice (制cooling COP is 4.2, 蓄冰容量 upper limit8000 kWh)；demand charge40 yuan/ kW/ month；carbon emission cost (电网carbon factor0.45 kg/ kWh, carbon price90 yuan/ton)；photovoltaic装机3000 kW lower limit",
+    "en_answer": "11316264",
+    "en_variable": {
+      "p_demand_max": 2200.0,
+      "pv_inst": 10000.0,
+      "sc_inst": 315.7643675853767,
+      "hp_inst": 34.25040538019733,
+      "tank_inst": 10000.0,
+      "ice_inst": 10000.0,
+      "ice_sto_inst": 8000.0
+    }
+  },
+  {
+    "id": 45,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Shaanxi Province, China. The system will incorporate equipment such as waste heat recovery units, fuel cells, electrolyzers, gas-fired boilers, lithium bromide absorption chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 2,300 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Combined modification: : Additionally, new fuel cellwaste heat recovery unitp_whr (热recovery efficiency0.60)；Additionally, new lithium bromide absorption chillerp_lbac (热转cooling COP is 1.25, 装机600-2500 kW)；fuel cellO&M cost1.0 yuan/ kg氢气；gas-fired boiler efficiency of is increased to 0.94",
+    "en_answer": "6945017",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "gb_inst": 1941.8069828138503,
+      "abc_inst": 1476.1181214719786,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 46,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangxi Zhuang Autonomous Region, China. The system will incorporate equipment such as solar collectors, water-source heat pumps, electrolyzers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,400 kW, the peak heating load stands at 1,000 kW, and the peak electrical load is 1,800 kW, with the building covering a floor area of 19,000 square meters. The time-of-use electricity prices range from 0.56 to 1.38 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Combined modification: : Additionally, new water-source heat pumpp_wshp (heating COP is 4.8, cooling COP is 6.0, 装机600-3000 kW, unit price of 4800 yuan/ kW)；photovoltaicsolar curtailmentpenalty cost0.15 yuan/ kWh；solar collector efficiency of is increased to 0.55",
+    "en_answer": "6367371",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.01920317124239464,
+      "el_inst": 0.000590209119088968,
+      "hst_inst": 0.012606190820128958,
+      "tank_inst": 9999.999786879918,
+      "wshp_inst": 600.0000004861733
+    }
+  },
+  {
+    "id": 47,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Qinghai Province, China. The system will incorporate equipment such as electric thermal storage devices, fuel cells, electrolyzers, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 800 kW, the peak heating load stands at 3,600 kW, and the peak electrical load is 700 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 15.0 yuan/kg and the selling price is 11.5 yuan/kg. Combined modification: : 完全off-grid运行, 风光氢储一体化系统. Additionally, new wind turbinep_wt (装机800-4000 kW, capacity factor0.32)；Additionally, new electric thermal storage devicep_esh (thermal storage capacity upper limit8000 kWh)；photovoltaic装机1500-8000 kW；hydrogen storage tank容量 upper limit600 kg",
+    "en_answer": "-7510769",
+    "en_variable": {
+      "pv_inst": 3357.6182276376453,
+      "wt_inst": 4000.0,
+      "fc_inst": 0.0,
+      "el_inst": 8819.431115141062,
+      "ghp_inst": 160.07773440540333,
+      "esh_inst": 2501.3865524584544,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 48,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Fujian Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, steam absorption chillers, cold water tanks, hydrogen storage tanks, photovoltaic panels, and steam generators. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it, purchasing hydrogen, and purchasing steam. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.54 to 1.36 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. Steam can be purchased at 200.0 yuan/ton. Combined modification: : Additionally, new steam energy balance, steam can be purchased externally at200 yuan/ton. Additionally, new steam generatorp_sg (电转steam efficiency of 0.90) and steam absorption chillerp_sac (steam转cooling COP is 1.45)；demand charge36 yuan/ kW/ month；air-source heat pumpupper capacity limit of 2000 kW",
+    "en_answer": "10350767",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 383.8313379786409,
+      "hst_inst": 0.0,
+      "hp_inst": 635.7662978585386,
+      "tank_inst": 10000.0,
+      "sg_inst": 10000.0,
+      "sac_inst": 0.0,
+      "peak_demand": 2141.6279468225703
+    }
+  },
+  {
+    "id": 49,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Shaanxi Province, China. The system will incorporate equipment such as hydrogen storage tanks, fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, electric boilers, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 900 kW, the peak heating load stands at 3,200 kW, and the peak electrical load is 650 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.32 to 1.12 yuan/kWh. The hydrogen purchase price is 17.0 yuan/kg and the selling price is 13.0 yuan/kg. Combined modification: : Additionally, new electric boilerp_eb (电转thermal efficiency of 0.97, 装机500-3000 kW, unit price of 700 yuan/ kW)；carbon emission cost (电网carbon factor0.55 kg/ kWh, carbon price75 yuan/ton)；fuel cellO&M cost0.8 yuan/ kg氢气；photovoltaic装机1000-6000 kW",
+    "en_answer": "3194348",
+    "en_variable": {
+      "pv_inst": 6000.0,
+      "el_inst": 0.0,
+      "fc_inst": 0.0,
+      "hst_inst": 0.0,
+      "eb_inst": 1209.3752216010864,
+      "ghp_inst": 459.2521178648916,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 50,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Guangdong Province, China. The system will incorporate equipment such as electric thermal storage devices, fuel cells, electrolyzers, high-temperature heat pumps, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 500 kW, the peak heating load stands at 4,000 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.25 to 1.05 yuan/kWh. The hydrogen purchase price is 14.0 yuan/kg and the selling price is 10.5 yuan/kg. Combined modification: : plateauoff-grid综合能源系统. Additionally, new high-temperature heat demand (constant80 kWfor供暖辅助), Additionally, new high-temperature heat pumpp_hhp (heating COP is 1.8)；Additionally, new wind turbinep_wt (装机600-3500 kW, capacity factor0.35)；Additionally, new electric thermal storage devicep_esh (thermal storage capacity upper limit15000 kWh)；photovoltaic efficiency of 0.24 (plateau高辐照)；fuel cellO&M cost1.0 yuan/ kg氢气",
+    "en_answer": "-1058956",
+    "en_variable": {
+      "pv_inst": 0.0,
+      "wt_inst": 3500.0,
+      "fc_inst": 0.0,
+      "el_inst": 919.7156514665525,
+      "ghp_inst": 95.85371650303944,
+      "hhp_inst": 107.0,
+      "esh_inst": 15000.0,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 51,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Hebei Province, China. The system will incorporate equipment such as solar collectors, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 2,100 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. solar collector efficiency of is increased to 0.58, lower capacity limit of 500 kW；ground-source heat pumpheating COP is adjusted to 4.1, cooling COP is adjusted to 5.2；electrolyzer装机1000-6000 kW",
+    "en_answer": "5190882",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 500.0,
+      "el_inst": 1000.0,
+      "ghp_inst": 427.594918008099,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 52,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shanxi Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 18.0 yuan/kg and the selling price is 13.5 yuan/kg. fuel cellpower generation efficiency is adjusted to 0.58, 装机800-4000 kW；chillerCOP is increased to 5.8；hydrogen storage tank容量 upper limit400 kg, 储氢 efficiency of 0.97",
+    "en_answer": "3406510",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 800.0,
+      "hst_inst": 0.0,
+      "hp_inst": 183.5704368394337,
+      "tank_inst": 10000.0,
+      "ch_inst": 167.26012093450979
+    }
+  },
+  {
+    "id": 53,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Anhui Province, China. The system will incorporate equipment such as gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 9,500 square meters. The time-of-use electricity prices range from 0.44 to 1.24 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. gas-fired boilerthermal efficiency of is increased to 0.97, 装机500-4000 kW, 单位 kWh制热燃气费用 is adjusted to 0.28元；hot water tank容量 upper limit6000 kWh；photovoltaic panelupper capacity limit of 5000 kW",
+    "en_answer": "5690747",
+    "en_variable": {
+      "pv_inst": 5000.0,
+      "gb_inst": 1765.3563062586923,
+      "ghp_inst": 323.7393374069966,
+      "tank_inst": 6000.0
+    }
+  },
+  {
+    "id": 54,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Jiangxi Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, fuel cells, electrolyzers, chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,300 kW, the peak heating load stands at 1,700 kW, and the peak electrical load is 950 kW, with the building covering a floor area of 12,500 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. air-source heat pumpheating COP is adjusted to 2.9, cooling COP is adjusted to 4.2, upper capacity limit of 3500 kW；chillerCOP is increased to 5.3；cold water tank容量 upper limit4000 kWh",
+    "en_answer": "4481845",
+    "en_variable": {
+      "pv_inst": 9992.255238463775,
+      "sc_inst": 59.05334431255052,
+      "fc_inst": 10.7008000822581,
+      "el_inst": 42.685227318684944,
+      "hp_inst": 504.6792704861293,
+      "ch_inst": 113.32134342233789,
+      "hst_inst": 14.929413307860452,
+      "tank_inst": 9999.964461975393
+    }
+  },
+  {
+    "id": 55,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Hubei Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and purchasing hydrogen. The annual peak cooling load of the system reaches 2,100 kW, the peak heating load stands at 1,900 kW, and the peak electrical load is 1,550 kW, with the building covering a floor area of 18,500 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. photovoltaic panelconversion efficiency is increased to 0.235, 装机1500-9000 kW；electrolyzer电解 efficiency of is increased to 0.75；hydrogen storage tank容量300-800 kg",
+    "en_answer": "-935503917",
+    "en_variable": {
+      "pv_inst": 9000.0,
+      "el_inst": 10000.0,
+      "ghp_inst": 484.5944451598509,
+      "hst_inst": 300.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 56,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangxi Zhuang Autonomous Region, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,400 kW, the peak heating load stands at 900 kW, and the peak electrical load is 1,700 kW, with the building covering a floor area of 20,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. hot water tank充放thermal efficiency of is increased to 0.97, 容量 upper limit10000 kWh；cold water tank充放冷 efficiency of is increased to 0.96；air-source heat pump装机2000-5000 kW",
+    "en_answer": "7027556",
+    "en_variable": {
+      "pv_inst": 9999.999815049838,
+      "fc_inst": 0.19474996053108207,
+      "hp_inst": 2000.0000131633349,
+      "tank_inst": 9999.998199942138
+    }
+  },
+  {
+    "id": 57,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guizhou Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 1,200 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 8,500 square meters. The time-of-use electricity prices range from 0.36 to 1.16 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. off-grid模式下photovoltaic panellower capacity limit of 3000 kW；electrolyzerlower capacity limit of 1000 kW；fuel celllower capacity limit of 500 kW；ground-source heat pumpheating COP4.0",
+    "en_answer": "7307352",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 1045.5296290263595,
+      "el_inst": 1000.0,
+      "ghp_inst": 50.42109888696467,
+      "ch_inst": 216.24556777970201,
+      "hst_inst": 40.90269617373086,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 58,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Yunnan Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,100 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 800 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. solar collector efficiency of is increased to 0.60, upper capacity limit of 2000 kW；photovoltaic panel efficiency of 0.24 (plateau高辐照)；air-source heat pumpheating COP2.6/cooling COP3.8",
+    "en_answer": "3341439",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.0,
+      "hp_inst": 494.2162803457981,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 59,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Gansu Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,000 kW, the peak heating load stands at 3,400 kW, and the peak electrical load is 750 kW, with the building covering a floor area of 13,500 square meters. The time-of-use electricity prices range from 0.32 to 1.12 yuan/kWh. The hydrogen purchase price is 17.0 yuan/kg and the selling price is 13.0 yuan/kg. electrolyzer efficiency of is increased to 0.73, upper capacity limit of 12000 kW；氢气销售价格上调至13 yuan/ kg；ground-source heat pumpcooling COP is adjusted to 5.3",
+    "en_answer": "-920490623",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 12000.0,
+      "ghp_inst": 802.0180950215769,
+      "hst_inst": 0.0,
+      "tank_inst": 9999.99999999971
+    }
+  },
+  {
+    "id": 60,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Qinghai Province, China. The system will incorporate equipment such as solar collectors, fuel cells, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 700 kW, the peak heating load stands at 3,000 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 15.5 yuan/kg and the selling price is 12.0 yuan/kg. photovoltaic panel efficiency of is increased to 0.25 (高海拔高辐照), 装机2000-10000 kW；fuel cell余热利用 efficiency of 0.35；chillerCOP5.5",
+    "en_answer": "1437431",
+    "en_variable": {
+      "pv_inst": 5571.515244274156,
+      "fc_inst": 0.4457528865591386,
+      "hst_inst": 1.6029333449147618,
+      "ghp_inst": 753.7948410648149,
+      "sc_inst": 5.230421631496719,
+      "tank_inst": 9999.996522905478,
+      "ch_inst": 32.99888227187799
+    }
+  },
+  {
+    "id": 61,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Shaanxi Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, gas-fired boilers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,000 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 16.5 yuan/kg and the selling price is 12.5 yuan/kg. gas-fired boiler单位 kWh制热燃气费用 is reduced to 0.25元；air-source heat pumplower capacity limit of 800 kW, heating COP2.7；photovoltaic上网电价 is increased to 0.35 yuan/ kWh",
+    "en_answer": "-18497112",
+    "en_variable": {
+      "pv_inst": 4257,
+      "tank_inst": 10000
+    }
+  },
+  {
+    "id": 62,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Xinjiang Uyghur Autonomous Region, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 900 kW, the peak heating load stands at 3,800 kW, and the peak electrical load is 650 kW, with the building covering a floor area of 11,500 square meters. The time-of-use electricity prices range from 0.26 to 1.06 yuan/kWh. The hydrogen purchase price is 15.0 yuan/kg and the selling price is 11.5 yuan/kg. hydrogen storage tankunit price of is reduced to 300 yuan/ kg, 容量 upper limit800 kg；fuel cellunit price of is reduced to 6000 yuan/ kW；ground-source heat pumpheating COP4.2, 装机1500-4000 kW",
+    "en_answer": "2684229",
+    "en_variable": {
+      "pv_inst": 9963.903532689996,
+      "fc_inst": 44.596125354127715,
+      "el_inst": 541.975209755091,
+      "ghp_inst": 1500.0003753842097,
+      "hst_inst": 168.4756460783354,
+      "tank_inst": 9999.940161081515,
+      "ch_inst": 6.6073733164141855
+    }
+  },
+  {
+    "id": 63,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shaanxi Province, China. The system will incorporate equipment such as solar collectors, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 600 kW, the peak heating load stands at 4,200 kW, and the peak electrical load is 550 kW, with the building covering a floor area of 10,500 square meters. The time-of-use electricity prices range from 0.24 to 1.04 yuan/kWh. The hydrogen purchase price is 14.5 yuan/kg and the selling price is 11.0 yuan/kg. photovoltaic panelunit price of is reduced to 2500 yuan/ kW；electrolyzerunit price of is reduced to 3500 yuan/ kW；hot water tankunit price of is reduced to 400 yuan/ kWh；ground-source heat pumpheating COP4.3",
+    "en_answer": "2461981",
+    "en_variable": {
+      "pv_inst": 1462.8164245106148,
+      "sc_inst": 44.42738758695353,
+      "el_inst": 1.969305080716678,
+      "ghp_inst": 1011.7386961733866,
+      "hst_inst": 13.1366161046003,
+      "tank_inst": 137.5946543358707
+    }
+  },
+  {
+    "id": 64,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shaanxi Province, China. The system will incorporate equipment such as fuel cells, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 400 kW, the peak heating load stands at 3,600 kW, and the peak electrical load is 500 kW, with the building covering a floor area of 8,000 square meters. The time-of-use electricity prices range from 0.22 to 1.02 yuan/kWh. The hydrogen purchase price is 14.0 yuan/kg and the selling price is 10.5 yuan/kg. plateau地区photovoltaic efficiency of is increased to 0.26；fuel cellpower generation efficiency is adjusted to 0.50 (高海拔影响)；ground-source heat pumpheating COP is adjusted to 3.6 (高海拔影响)",
+    "en_answer": "1350394",
+    "en_variable": {
+      "pv_inst": 3231.4188290902257,
+      "fc_inst": 61.11091507508273,
+      "ghp_inst": 170.80547054217894,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 3.413967052721033
+    }
+  },
+  {
+    "id": 65,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, chillers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 3,000 kW, the peak heating load stands at 500 kW, and the peak electrical load is 2,100 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.62 to 1.48 yuan/kWh. The hydrogen purchase price is 22.0 yuan/kg and the selling price is 17.0 yuan/kg. chillerCOP is increased to 6.2, 装机1000-4000 kW；cold water tank容量 upper limit8000 kWh, 储冷 efficiency of 0.94；solar collector主要for生活热水供应",
+    "en_answer": "12970058",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 9.786763327974415e-07,
+      "hp_inst": 51.361375656782464,
+      "ch_inst": 1000.0,
+      "tank_inst": 7999.999999998638
+    }
+  },
+  {
+    "id": 66,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Beijing, China. The system will incorporate equipment such as gas internal combustion engines, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 2,500 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new gas internal combustion enginep_gice (燃料 is 天然气, power generation efficiency0.40, waste heat recovery efficiency of 0.42, 装机300-3000 kW, unit price of 6500 yuan/ kW, service life of 18 years, 天然气价格3.2元/m³)",
+    "en_answer": "3482515",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 31.094719957902754,
+      "ghp_inst": 468.88592383362436,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "gice_inst": 472.91574536241296
+    }
+  },
+  {
+    "id": 67,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shanghai, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, absorption heat pumps, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,700 kW, with the building covering a floor area of 19,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. Additionally, new absorption heat pumpp_ahp (热源 is 燃气, heating COP is 1.7, 装机500-2500 kW, unit price of 4000 yuan/ kW, service life of 15 years, 燃气消耗按热值计算)",
+    "en_answer": "8410608",
+    "en_variable": {
+      "pv_inst": 9999.999896561636,
+      "fc_inst": 0.034436391056346445,
+      "hp_inst": 698.333359630357,
+      "tank_inst": 9999.999659135428,
+      "ahp_inst": 500.00000495694223
+    }
+  },
+  {
+    "id": 68,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Tianjin, China. The system will incorporate equipment such as magnetic levitation centrifugal chillers, gas-fired boilers, ground-source heat pumps, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new magnetic levitation centrifugal chillerp_mcc (电制cooling COP is 6.5, 装机500-3000 kW, unit price of 7000 yuan/ kW, service life of 20 years, 部分负荷性能优异)",
+    "en_answer": "5375947",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "ghp_inst": 0.0,
+      "gb_inst": 1891.6037763538056,
+      "tank_inst": 10000.0,
+      "mcc_inst": 500.0
+    }
+  },
+  {
+    "id": 69,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Chongqing, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, hot water tanks, sewage-source heat pumps, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new sewage-source heat pumpp_swhp (热源 is 城市污水, heating COP is 4.2, cooling COP is 5.0, 装机400-2000 kW, unit price of 5500 yuan/ kW, service life of 16 years, 需要污水处理配套设施)",
+    "en_answer": "5875574",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "hp_inst": 0.0,
+      "swhp_inst": 400.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 70,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, variable refrigerant flow (VRF) systems, fuel cells, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,800 kW, the peak heating load stands at 800 kW, and the peak electrical load is 2,000 kW, with the building covering a floor area of 22,000 square meters. The time-of-use electricity prices range from 0.6 to 1.45 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Additionally, new variable refrigerant flow (VRF) systemp_vrf (电制cooling COP is 4.5, 电制heating COP is 3.8, 装机200-2000 kW, unit price of 3500 yuan/ kW, service life of 15 years, suitable for分区独立控制)",
+    "en_answer": "7641338",
+    "en_variable": {
+      "pv_inst": 9999.999991877065,
+      "fc_inst": 0.0061441991997306655,
+      "hst_inst": 0.014841481467950477,
+      "hp_inst": 359.000009236288,
+      "tank_inst": 9999.999852590494,
+      "vrf_inst": 200.0000013117787
+    }
+  },
+  {
+    "id": 71,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Zhejiang Province, China. The system will incorporate equipment such as hot water tanks, electrolyzers, ground-source heat pumps, air-source water heaters, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and purchasing hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 1,700 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new air-source water heaterp_awhw (专for生活热水, heating COP is 4.0, 装机100-800 kW, unit price of 2800 yuan/ kW, service life of 12 years, 出水温度55°C)",
+    "en_answer": "6511811",
+    "en_variable": {
+      "pv_inst": 9435.414009784097,
+      "el_inst": 0.0,
+      "ghp_inst": 398.8888888888889,
+      "tank_inst": 10000.0,
+      "awhw_inst": 100.0
+    }
+  },
+  {
+    "id": 72,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Jiangsu Province, China. The system will incorporate equipment such as 直膨式空调, air-source heat pumps, fuel cells, gas-fired boilers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new 直膨式空调p_dx (电制cooling COP is 3.8, 装机100-1500 kW, unit price of 2500 yuan/ kW, service life of 10 years, suitable for小型分散空调需求)",
+    "en_answer": "5722065",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "hst_inst": 0.0,
+      "hp_inst": 446.3366019436674,
+      "gb_inst": 1108.7079856357577,
+      "tank_inst": 10000.0,
+      "dx_inst": 222.0299290348382
+    }
+  },
+  {
+    "id": 73,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Fujian Province, China. The system will incorporate equipment such as radiant cooling systems, air-source heat pumps, solar collectors, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 1,200 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.54 to 1.34 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new radiant cooling systemp_rc (配合地板辐射, 供cooling COP is 5.5, 装机200-1500 kW, unit price of 4200 yuan/ kW, service life of 18 years, 舒适度高但响应慢)",
+    "en_answer": "6288952",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 73.70553994105367,
+      "hp_inst": 373.72708910532884,
+      "tank_inst": 10000.0,
+      "rc_inst": 239.34351923762236
+    }
+  },
+  {
+    "id": 74,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shandong Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, ground-source heat pumps, evaporative cooling air conditioners, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new evaporative cooling air conditionerp_ec (利用水蒸发制冷, 电耗极低COP is 15, 装机200-2000 kW, unit price of 2000 yuan/ kW, service life of 12 years, suitable for干燥气候)",
+    "en_answer": "3511378",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 26.843308685029683,
+      "ghp_inst": 648.9388016433807,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ec_inst": 200.0
+    }
+  },
+  {
+    "id": 75,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Hebei Province, China. The system will incorporate equipment such as electric heating films, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Additionally, new electric heating filmp_ehf (电转thermal efficiency of 0.99, 装机100-1000 kW, unit price of 1500 yuan/ kW, service life of 20 years, suitable for辅助供热 and 低谷电利用)",
+    "en_answer": "4464259",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 502.07316450964794,
+      "ehf_inst": 608.0284402782346,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 76,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Hubei Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, heat recovery chillers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new heat recovery chillerp_hrc (制cooling COP is 4.8, 同时回收冷凝热, 热recovery efficiency0.85, 装机500-2500 kW, unit price of 6000 yuan/ kW, service life of 15 years)",
+    "en_answer": "7158010",
+    "en_variable": {
+      "pv_inst": 9999.999999999938,
+      "fc_inst": 7.349066692570117e-08,
+      "hp_inst": 597.3203073333983,
+      "hrc_inst": 500.0,
+      "tank_inst": 9999.999999999924
+    }
+  },
+  {
+    "id": 77,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Hunan Province, China. The system will incorporate equipment such as phase change thermal storage devices, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,000 kW, with the building covering a floor area of 12,500 square meters. The time-of-use electricity prices range from 0.44 to 1.24 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Additionally, new phase change thermal storagep_pcm (蓄热温度58°C, 蓄thermal efficiency of 0.95, 放thermal efficiency of 0.93, thermal storage capacity upper limit6000 kWh, unit price of 700 yuan/ kWh, service life of 20 years, 体积小蓄热密度高)",
+    "en_answer": "4699155",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 507.1851368906285,
+      "tank_inst": 10000.0,
+      "pcm_inst": 0.0
+    }
+  },
+  {
+    "id": 78,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangxi Zhuang Autonomous Region, China. The system will incorporate equipment such as air-source heat pumps, hot water tanks, cold water tanks, photovoltaic panels, and chilled beam systems. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 2,500 kW, the peak heating load stands at 700 kW, and the peak electrical load is 1,800 kW, with the building covering a floor area of 20,000 square meters. The time-of-use electricity prices range from 0.56 to 1.38 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new chilled beam systemp_cb (配合chiller使用, 供冷 efficiency of 提升20%, 装机300-2000 kW, unit price of 3000 yuan/ kW, service life of 18 years, 室内无风机噪音低)",
+    "en_answer": "5755613",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "hp_inst": 200.65070207793747,
+      "tank_inst": 10000.0,
+      "cb_inst": 1537.5667286406342
+    }
+  },
+  {
+    "id": 79,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Sichuan Province, China. The system will incorporate equipment such as free cooling systems, solar collectors, fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new free cooling systemp_fc (利用室外低温空气免费制冷, 启动温度阈值15°C, 制冷功率 upper limit1000 kW, unit price of 1200 yuan/ kW, service life of 15 years, 电耗仅 is 风机能耗)",
+    "en_answer": "5431089",
+    "en_variable": {
+      "pv_inst": 9009.076158995476,
+      "sc_inst": 18.293473630206037,
+      "fc_inst": 8.986841189486173,
+      "el_inst": 7.477614514738498,
+      "ghp_inst": 450.2986572957951,
+      "hst_inst": 13.313706497685835,
+      "tank_inst": 9999.984852980931,
+      "nc_inst": 0.0
+    }
+  },
+  {
+    "id": 80,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Shaanxi Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, solar water heating systems, gas-fired boilers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 11,500 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new solar water heating systemp_swh (集thermal efficiency of 0.65, 带储hot water tank, 储热容量2000 kWh, 装机200-1500 kW, unit price of 2200 yuan/ kW, service life of 20 years, 专for生活热水)",
+    "en_answer": "7290819",
+    "en_variable": {
+      "pv_inst": 9999.987739982547,
+      "fc_inst": 20.97726204051904,
+      "hst_inst": 13.494856249847725,
+      "gb_inst": 890.3730365951868,
+      "hp_inst": 602.1680499154362,
+      "tank_inst": 9999.96872420966,
+      "swh_inst": 200.00200228477826
+    }
+  },
+  {
+    "id": 81,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Beijing, China. The system will incorporate equipment such as medium-temperature heat pumps, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 17,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new 能量平衡: medium-temperature heat demand (65-80°C热水), 中温热负荷峰值200 kWfor工艺加热. Additionally, new medium-temperature heat pumpp_mthp (热源 is 电, 输出中温热, heating COP is 2.8, 装机100-800 kW, unit price of 3800 yuan/ kW, service life of 12 years)",
+    "en_answer": "5802746",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 215.9355000185386,
+      "ghp_inst": 556.2205352745427,
+      "mthp_inst": 100.0,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 82,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Shanghai, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Additionally, new 能量平衡: district cooling. 允许从district cooling管网购买冷量, 冷量价格0.35 yuan/ kWh, 供冷功率 upper limit1500 kW, 可作 is 冷负荷的补充来源",
+    "en_answer": "5525658",
+    "en_variable": {
+      "pv_inst": 9999.996021275803,
+      "fc_inst": 15.224317120749852,
+      "hp_inst": 438.1373073577295,
+      "tank_inst": 9999.959085395423
+    }
+  },
+  {
+    "id": 83,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Tianjin, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new 能量平衡: district heating. 允许从district heating管网购买热量, 热量价格0.25 yuan/ kWh, 供热功率 upper limit2000 kW, 可作 is 热负荷的补充来源",
+    "en_answer": "5115266",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "hp_inst": 291.6130589395575,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 84,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, compressed air energy storage (CAES), hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 800 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.58 to 1.42 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new 能量平衡: compressed air energy storage. Additionally, new compressed air energy storage系统p_caes (储能 efficiency of 0.70, 容量 upper limit10000 kWh, charge/discharge power rate upper limit2000 kW, unit price of 800 yuan/ kWh, service life of 25 years), 替代电池储能",
+    "en_answer": "6718750",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "hp_inst": 383.4669641951931,
+      "tank_inst": 10000.0,
+      "caes_inst": 2040.8163265306123
+    }
+  },
+  {
+    "id": 85,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Jiangsu Province, China. The system will incorporate equipment such as 燃料电池余热, fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 2,100 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Additionally, new 能量平衡: fuel cell余热利用. fuel cell运行时产生的余热 (约占输入能量的35%)可以回收利用, 余热温度60-80°C, 可直接满足低温热需求 or 通过热泵提升品位",
+    "en_answer": "4085813",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "ghp_inst": 485.1154337768378,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 86,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Zhejiang Province, China. The system will incorporate equipment such as electrolyzers, supercapacitors, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Additionally, new 能量平衡: supercapacitor储能. Additionally, new supercapacitorp_sc (charge/discharge efficiency0.95, 响应时间毫秒级, 容量 upper limit500 kWh, 功率 upper limit2000 kW, unit price of 3000 yuan/ kWh, service life of 20 years, 循环次数100万次), for电力调峰 and 功率平滑",
+    "en_answer": "6316080",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "ghp_inst": 398.8888888888889,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "sc_inst": 500.0
+    }
+  },
+  {
+    "id": 87,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Shandong Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, gas-fired boilers, hot water tanks, cold water tanks, 低温余热回收, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Additionally, new 能量平衡: 低温余热 (30-50°C). Additionally, new 低温waste heat recovery系统p_lwhr (回收空调冷凝热、厨房余热等, recovery efficiency0.60, 可for预热生活热水 or 通过热泵提升品位, 装机200-1000 kW, unit price of 1800 yuan/ kW)",
+    "en_answer": "5475216",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "hst_inst": 0.0,
+      "gb_inst": 455.84105157491985,
+      "hp_inst": 505.47400604332904,
+      "tank_inst": 10000.0,
+      "lwhr_inst": 898.6578911527624
+    }
+  },
+  {
+    "id": 88,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Hebei Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, photovoltaic panels, and flywheel energy storage. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 1,200 kW, the peak heating load stands at 3,000 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 18.0 yuan/kg and the selling price is 13.5 yuan/kg. Additionally, new 能量平衡: flywheel energy storage. off-grid系统中Additionally, new flywheel energy storagep_fw (机械储能, charge/discharge efficiency0.90, 容量 upper limit200 kWh, 功率 upper limit500 kW, unit price of 4000 yuan/ kWh, service life of 25 years), for短时功率平衡 and 电能质量改善",
+    "en_answer": "4647629",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 909.3757215584221,
+      "el_inst": 384.1087646216903,
+      "ghp_inst": 424.05365913283043,
+      "hst_inst": 55.926236128918106,
+      "tank_inst": 10000.0,
+      "fw_inst": 200.0
+    }
+  },
+  {
+    "id": 89,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Liaoning Province, China. The system will incorporate equipment such as steam heat exchangers, electrolyzers, ground-source heat pumps, hot water tanks, steam absorption chillers, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it, buying and selling hydrogen, and purchasing steam. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.36 to 1.16 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Steam can be purchased at 160.0 yuan/ton. Additionally, new 能量平衡: steam能量 (可买可卖). 接入工业园区steam管网, steam购买价160 yuan/ton, 销售价120 yuan/ton. Additionally, new steam heat exchangerp_she (steam转热水 efficiency of 0.95, 装机500-2000 kW)",
+    "en_answer": "2967713",
+    "en_variable": {
+      "pv_inst": 9908.784581555728,
+      "el_inst": 0.0,
+      "ghp_inst": 693.614233503106,
+      "she_inst": 500.0,
+      "sabc_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 90,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Jilin Province, China. The system will incorporate equipment such as 电蓄热锅炉, fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 700 kW, the peak heating load stands at 3,800 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 17.0 yuan/kg and the selling price is 13.0 yuan/kg. Additionally, new 能量平衡: solid thermal storage. Additionally, new 电蓄热锅炉p_eshb (电转thermal efficiency of 0.98, 蓄热介质 is solid thermal storage砖, 蓄热温度可达600°C, thermal storage capacity upper limit15000 kWh, 放热功率 upper limit3000 kW, unit price of 500 yuan/ kWh, service life of 20 years)",
+    "en_answer": "2169804",
+    "en_variable": {
+      "pv_inst": 6814.788156133049,
+      "el_inst": 0.0,
+      "fc_inst": 0.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 246.64315937462166,
+      "eshb_inst": 700.3339811912896,
+      "tank_inst": 10000.0,
+      "ch_inst": 6.613450306194959
+    }
+  },
+  {
+    "id": 91,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Heilongjiang Province, China. The system will incorporate equipment such as biomass boilers, chillers, electrolyzers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 600 kW, the peak heating load stands at 4,000 kW, and the peak electrical load is 550 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 16.5 yuan/kg and the selling price is 12.5 yuan/kg. Additionally, new 能量平衡: 生物质能. Additionally, new biomass boilerp_bb (燃料 is 木屑颗粒, thermal efficiency of 0.85, 装机500-3000 kW, unit price of 2500 yuan/ kW, service life of 15 years, 生物质燃料价格800 yuan/ton, 热值4.2 kWh/ kg), 属于碳中 and 能源",
+    "en_answer": "2728495",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 364.3674427392148,
+      "ghp_inst": 959.9871088446888,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 38.705161908042214,
+      "bb_inst": 500.0
+    }
+  },
+  {
+    "id": 92,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Shaanxi Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, liquid air energy storage (LAES), chillers, wind turbines, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 500 kW, the peak heating load stands at 4,200 kW, and the peak electrical load is 500 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.24 to 1.04 yuan/kWh. The hydrogen purchase price is 14.5 yuan/kg and the selling price is 11.0 yuan/kg. Additionally, new 能量平衡: liquid air energy storage. Additionally, new liquid air energy storage系统p_laes (储能 efficiency of 0.55, 容量 upper limit20000 kWh, 功率 upper limit3000 kW, unit price of 600 yuan/ kWh, service life of 30 years), suitable for大规模长时储能, 与hydrogen storage互补",
+    "en_answer": "3527812",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 739.5691938469033,
+      "el_inst": 0.0,
+      "ghp_inst": 763.2384544443096,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 0.0,
+      "laes_inst": 4902.246957071638,
+      "laes_power_max": 3000.0
+    }
+  },
+  {
+    "id": 93,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Xinjiang Uyghur Autonomous Region, China. The system will incorporate equipment such as concentrated solar power (CSP), electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 800 kW, the peak heating load stands at 3,500 kW, and the peak electrical load is 650 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.26 to 1.06 yuan/kWh. The hydrogen purchase price is 15.0 yuan/kg and the selling price is 11.5 yuan/kg. Additionally, new 能量平衡: concentrated solar power (CSP). Additionally, new 塔式concentrated solar power (CSP)系统p_csp (光热转电 efficiency of 0.20, 带molten salt thermal storage, 储热容量8小时, 装机500-5000 kW, unit price of 15000 yuan/ kW, service life of 25 years), 可实现24小时稳定发电",
+    "en_answer": "-8230765",
+    "en_variable": {
+      "pv_inst": 3296.074343637619,
+      "el_inst": 7924.922313546232,
+      "ghp_inst": 897.2585731740884,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "csp_inst": 5000.0,
+      "cst_inst": 10000.0
+    }
+  },
+  {
+    "id": 94,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Gansu Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, 氢气管道, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 900 kW, the peak heating load stands at 3,200 kW, and the peak electrical load is 700 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 16.0 yuan/kg and the selling price is 12.5 yuan/kg. Additionally, new 能量平衡: hydrogen pipeline输送. 建筑可接入区域氢气管网, Additionally, new hydrogen pipelinep_hp (输氢 efficiency of 0.98, 输氢功率 upper limit500 kg/h, 管道建设成本分摊200 yuan/ kg years), 实现氢气的灵活调度",
+    "en_answer": "-52167680",
+    "en_variable": {
+      "pv_inst": 8736.580009525142,
+      "el_inst": 298.98586952180136,
+      "ghp_inst": 744.3595197058678,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 95,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Qinghai Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen boilers, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 700 kW, the peak heating load stands at 3,400 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 15.0 yuan/kg and the selling price is 11.5 yuan/kg. Additionally, new 能量平衡: 氢燃烧制热. Additionally, new hydrogen boilerp_hb (氢气燃烧制thermal efficiency of 0.92, 装机500-3000 kW, unit price of 3500 yuan/ kW, service life of 18 years, 氢气消耗按热值33.3 kWh/ kg计算), 实现零碳供热",
+    "en_answer": "2533699",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 404.97625750429654,
+      "ghp_inst": 707.0653717989346,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 37.10209658969549,
+      "hb_inst": 500.0
+    }
+  },
+  {
+    "id": 96,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Beijing, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加电力基本电费. 除分时电价外, 用户需要按照变压器容量缴纳基本电费, 基本电费28元/kVA/ month, 变压器容量根据最大买电功率确定",
+    "en_answer": "4905503",
+    "en_variable": {
+      "p_pur_max": 1811.3863449282858,
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "ghp_inst": 581.4192521966564,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 97,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shanghai, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,700 kW, with the building covering a floor area of 19,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Objective function modification: : 增加electrolyzerO&M cost. electrolyzer每产生1 kg氢气需要产生0.5元的O&M cost (包括膜组件损耗、纯水消耗等), 此成本计入目标函数",
+    "en_answer": "8312573",
+    "en_variable": {
+      "pv_inst": 9999.998494111465,
+      "fc_inst": 10.277582012260915,
+      "hst_inst": 1.8596145131235962,
+      "hp_inst": 698.3338105270344,
+      "tank_inst": 9999.996262977409
+    }
+  },
+  {
+    "id": 98,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, chillers, gas-fired boilers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 2,800 kW, the peak heating load stands at 1,000 kW, and the peak electrical load is 2,000 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.6 to 1.45 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. Objective function modification: : 增加功率因数考核. 用户功率因数低于0.9时需要支付力率调整电费, 每低0.01收取电费的1%作 is 罚款. 需要在目标函数中考虑无功补偿 or 提高功率因数",
+    "en_answer": "12552339",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "gb_inst": 259.58087804662284,
+      "hp_inst": 162.44905020531425,
+      "ch_inst": 490.58952208534606,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 99,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Jiangsu Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加hydrogen storage tank维护成本. hydrogen storage tank每 years需要进行检测 and 维护, 维护成本 is 储氢容量的2%乘以unit price of , 即每 kg容量每 years6元维护费",
+    "en_answer": "5575267",
+    "en_variable": {
+      "pv_inst": 9997.788554477827,
+      "el_inst": 47.99769733783506,
+      "fc_inst": 10.745747344098366,
+      "hst_inst": 11.598596376965327,
+      "ghp_inst": 431.21375076241713,
+      "tank_inst": 9999.95373320179
+    }
+  },
+  {
+    "id": 100,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Zhejiang Province, China. The system will incorporate equipment such as air-source heat pumps, electrolyzers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,900 kW, the peak heating load stands at 1,500 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加renewable energy consumption比例考核. 用户需要确保renewable energy发电量占总用电量的比例不低于30%, 否则每低1%需要支付总用电成本的0.5%作 is penalty cost",
+    "en_answer": "4826377",
+    "en_variable": {
+      "pv_inst": 10000.00000000344,
+      "el_inst": 0.0,
+      "hp_inst": 614.9066188469153,
+      "tank_inst": 10000.0,
+      "total_renewable_gen": 1680205.2750003233,
+      "total_consumption": 5799497.17518401,
+      "green_ratio": 0.2897156812473166,
+      "ratio_shortfall": 0.010284318752683362,
+      "penalty_cost": 25945.08673637241
+    }
+  },
+  {
+    "id": 101,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shandong Province, China. The system will incorporate equipment such as fuel cells, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 2,600 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加设备depreciation residual value. 设备在service life of 期末有残值, photovoltaic panel残值率5%, 热泵残值率8%, hydrogen storage tank残值率10%. 目标函数中设备成本应扣除残值的现值",
+    "en_answer": "4879076",
+    "en_variable": {
+      "pv_inst": 9999.999999983169,
+      "fc_inst": 1.193086039444187e-07,
+      "ghp_inst": 591.6738223067316,
+      "hst_inst": 2.845833441726011e-07,
+      "tank_inst": 9999.999999999734
+    }
+  },
+  {
+    "id": 102,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Hebei Province, China. The system will incorporate equipment such as air-source heat pumps, gas-fired boilers, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.4 to 1.2 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加天然气阶梯价格. 天然气按 month用量分三档: 0-5000m³价格3.0元/m³, 5000-15000m³价格3.3元/m³, 超过15000m³价格3.6元/m³",
+    "en_answer": "5032611",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "gb_inst": 0.0,
+      "hp_inst": 466.4948418467581,
+      "tank_inst": 10000.0,
+      "ng_tier1": 0.0,
+      "ng_tier2": 0.0,
+      "ng_tier3": 0.0,
+      "z1": 0.0,
+      "z2": -0.0
+    }
+  },
+  {
+    "id": 103,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Hubei Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 1,900 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Objective function modification: : 增加调峰subsidy收益. 用户参与电网调峰时可获得subsidy, 削峰 (在用电高峰期减少买电)subsidy0.5 yuan/ kWh, 填谷 (在用电低谷期增加买电)subsidy0.3 yuan/ kWh",
+    "en_answer": "4242585",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 553.3727034503661,
+      "ghp_inst": 470.77528792214486,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 104,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Hunan Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Objective function modification: : 增加设备安装subsidy. photovoltaic panel装机subsidy200 yuan/ kW, fuel cell装机subsidy500 yuan/ kW, electrolyzer装机subsidy300 yuan/ kW, subsidy在投资成本中扣除",
+    "en_answer": "4726389",
+    "en_variable": {
+      "pv_inst": 9999.998762666877,
+      "fc_inst": 6.450816156985396,
+      "hp_inst": 600.8860453638354,
+      "tank_inst": 9999.996461257891
+    }
+  },
+  {
+    "id": 105,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Sichuan Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 1,700 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.44 to 1.24 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Objective function modification: : 增加热泵low-temperature degradation损失. air-source heat pump在environmental温度低于5°C时COP下降20%, 低于0°C时COP下降35%, 需要根据当地气温数据动态调整热泵 efficiency of",
+    "en_answer": "5248611",
+    "en_variable": {
+      "pv_inst": 8699.41199936057,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 416.41747789252406,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 106,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Chongqing, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, gas-fired boilers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and purchasing hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 1,500 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.5 to 1.3 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加绿色建筑认证奖励. 若建筑达到二星级绿色建筑标准 (renewable energy利用率≥15%), 可获得一次性奖励50万元；达到三星级 (≥25%)可获得100万元奖励",
+    "en_answer": "7996969",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 220.83071410270585,
+      "hst_inst": 0.0,
+      "gb_inst": 0.0,
+      "hp_inst": 636.1921428583295,
+      "tank_inst": 10000.0,
+      "RER": 0.25,
+      "is_2star": 1.0,
+      "is_3star": 1.0
+    }
+  },
+  {
+    "id": 107,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Shaanxi Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,300 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,000 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.46 to 1.26 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Objective function modification: : 增加氢气价格波动. 氢气购买价格按季度波动: 春季 (3-5 month)18 yuan/ kg, 夏季 (6-8 month)17 yuan/ kg, 秋季 (9-11 month)19 yuan/ kg, 冬季 (12-2 month)20 yuan/ kg",
+    "en_answer": "4890301",
+    "en_variable": {
+      "pv_inst": 9582.352368265389,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 579.6777403642993,
+      "tank_inst": 10000.0,
+      "ch_inst": 0.0
+    }
+  },
+  {
+    "id": 108,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Yunnan Province, China. The system will incorporate equipment such as air-source heat pumps, solar collectors, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 1,200 kW, the peak heating load stands at 1,400 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加photovoltaic度电subsidy. photovoltaic发电每发1 kWh可获得0.08元的度电subsidy (持续20 years), 此subsidy收入应计入目标函数作 is 收益",
+    "en_answer": "2372563",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "sc_inst": 0.0,
+      "hp_inst": 447.8104926952091,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 109,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Guizhou Province, China. The system will incorporate equipment such as electrolyzers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,100 kW, the peak heating load stands at 1,800 kW, and the peak electrical load is 900 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 18.0 yuan/kg and the selling price is 13.5 yuan/kg. Objective function modification: : 增加设备维修预留金. 所有设备每 years需预留投资成本的1.5%作 is 维修基金, 此费用计入 years运行成本",
+    "en_answer": "3775942",
+    "en_variable": {
+      "pv_inst": 4804.62684783567,
+      "el_inst": 0.0,
+      "ghp_inst": 371.9092967668346,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 110,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Fujian Province, China. The system will incorporate equipment such as air-source heat pumps, fuel cells, chillers, gas-fired boilers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,100 kW, the peak heating load stands at 1,200 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.54 to 1.36 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Objective function modification: : 增加multi-objective optimization. 除economic成本最小化外, 增加environmental目标: 总碳排放量不超过 years限值1000 tonCO2, 超出部分按200 yuan/ton计入成本",
+    "en_answer": "9206769",
+    "en_variable": {
+      "pv_inst": 9999.999999999936,
+      "fc_inst": 4.0026941236642625e-07,
+      "hst_inst": 7.305831240378493e-07,
+      "hp_inst": 401.05776703205265,
+      "gb_inst": 1.4932672830787374e-06,
+      "tank_inst": 9999.999999993692,
+      "ch_inst": 6.879611980166799e-07,
+      "carbon_total": 4812.932180465552,
+      "carbon_exceed": 3812.9321804655488
+    }
+  },
+  {
+    "id": 111,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Beijing, China. The system will incorporate equipment such as hot water tanks, fuel cells, electrolyzers, ground-source heat pumps, micro gas turbines, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,200 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,800 kW, with the building covering a floor area of 20,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Combined modification: : Additionally, new micro gas turbinep_mgt (power generation efficiency0.36, waste heat recovery efficiency of 0.44, 装机300-2500 kW)；demand charge40 yuan/ kW/ month；carbon emission cost (carbon factor0.5 kg/ kWh, carbon price85 yuan/ton)；ground-source heat pumpheating COP4.2",
+    "en_answer": "4986275",
+    "en_variable": {
+      "p_pur_max": 1776.8998656719505,
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "ghp_inst": 472.65322005362134,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "mgt_inst": 2500.0
+    }
+  },
+  {
+    "id": 112,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shanghai, China. The system will incorporate equipment such as air-source heat pumps, steam heat exchangers, fuel cells, high-temperature heat pumps, double-effect absorption chillers, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it, buying and selling hydrogen, and purchasing steam. The annual peak cooling load of the system reaches 2,500 kW, the peak heating load stands at 1,600 kW, and the peak electrical load is 1,900 kW, with the building covering a floor area of 22,000 square meters. The time-of-use electricity prices range from 0.55 to 1.38 yuan/kWh. The hydrogen purchase price is 20.5 yuan/kg and the selling price is 15.5 yuan/kg. Steam can be purchased at 180.0 yuan/ton. Combined modification: : Additionally, new steam energy balance and high-temperature heat demand (constant100 kW). Additionally, new high-temperature heat pumpp_hhp (heating COP2.0)；Additionally, new double-effect absorption chillerp_dac (热转cooling COP1.35)；steam can be purchased externally at180 yuan/ton；fuel cellO&M cost1.2 yuan/ kg氢气",
+    "en_answer": "7532009",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 5.098235290998269,
+      "hst_inst": 0.0,
+      "hp_inst": 425.8961580168873,
+      "hhp_inst": 50.0,
+      "dac_inst": 1363.135519879486,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 113,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, ice storage systems, gas-fired boilers, hot water tanks, cold water tanks, 低温余热回收, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 3,000 kW, the peak heating load stands at 900 kW, and the peak electrical load is 2,200 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.6 to 1.45 yuan/kWh. The hydrogen purchase price is 21.0 yuan/kg and the selling price is 16.0 yuan/kg. Combined modification: : Additionally, new ice storage systemp_ice (制cooling COP4.5, 蓄冰容量 upper limit10000 kWh)；Additionally, new 低温waste heat recoveryp_lwhr (回收厨房余热, efficiency of 0.55)；carbon emission cost100 yuan/ton；设备启停成本；photovoltaic装机2000-8000 kW",
+    "en_answer": "16140085",
+    "en_variable": {
+      "pv_inst": 8000.0,
+      "gb_inst": 0.0,
+      "hp_inst": 950.8148424699982,
+      "tank_inst": 10000.0,
+      "ice_inst": 9.456771686667805,
+      "lwhr_inst": 131.9718708922523
+    }
+  },
+  {
+    "id": 114,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Jiangsu Province, China. The system will incorporate equipment such as water-source heat pumps, fuel cells, electrolyzers, phase change thermal storage devices, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,000 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 15,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Combined modification: : Additionally, new water-source heat pumpp_wshp (heating COP4.5, cooling COP5.5, 装机500-2500 kW)；Additionally, new phase change thermal storagep_pcm (thermal storage capacity upper limit5000 kWh)；electrolyzerO&M cost0.5 yuan/ kg氢气；photovoltaicsolar curtailment考核0.1 yuan/ kWh",
+    "en_answer": "5644505",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "wshp_inst": 2500.0,
+      "pcm_inst": 5000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 115,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Zhejiang Province, China. The system will incorporate equipment such as electrolyzers, supercapacitors, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,000 kW, the peak heating load stands at 1,700 kW, and the peak electrical load is 1,600 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.52 to 1.32 yuan/kWh. The hydrogen purchase price is 19.5 yuan/kg and the selling price is 14.5 yuan/kg. Combined modification: : Additionally, new district cooling (0.38 yuan/ kWh, upper limit1200 kW)；Additionally, new supercapacitorp_sc (容量 upper limit400 kWh, 功率 upper limit1500 kW)；demand charge35 yuan/ kW/ month；renewable energy consumption比例考核 (≥25%)",
+    "en_answer": "5553977",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "ghp_inst": 320.1970435930204,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "sc_cap_inst": 400.0,
+      "sc_pow_inst": 1500.0,
+      "max_pur_power": 1519.561560554961
+    }
+  },
+  {
+    "id": 116,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Shandong Province, China. The system will incorporate equipment such as electric thermal storage devices, fuel cells, electrolyzers, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 1,500 kW, the peak heating load stands at 2,800 kW, and the peak electrical load is 1,200 kW, with the building covering a floor area of 14,000 square meters. The time-of-use electricity prices range from 0.42 to 1.22 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Combined modification: : off-grid运行. Additionally, new wind turbinep_wt (装机500-4000 kW, capacity factor0.26)；Additionally, new electric thermal storage devicep_esh (thermal storage capacity upper limit10000 kWh)；photovoltaic装机2500 kW lower limit；fuel cellO&M cost1.0 yuan/ kg氢气",
+    "en_answer": "117126",
+    "en_variable": {
+      "pv_inst": 2500.0,
+      "wt_inst": 4000.0,
+      "fc_inst": 467.54274163498104,
+      "el_inst": 692.0651798076489,
+      "ghp_inst": 457.2640560559934,
+      "hst_inst": 22.628415424938765,
+      "tank_inst": 10000.0,
+      "esh_inst": 10000.0
+    }
+  },
+  {
+    "id": 117,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Hebei Province, China. The system will incorporate equipment such as waste heat recovery units, fuel cells, electrolyzers, gas-fired boilers, lithium bromide absorption chillers, hot water tanks, absorption heat pumps, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,700 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,300 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.38 to 1.18 yuan/kWh. The hydrogen purchase price is 18.0 yuan/kg and the selling price is 13.5 yuan/kg. Combined modification: : 热电联产系统. Additionally, new fuel cellwaste heat recoveryp_whr ( efficiency of 0.60)；Additionally, new absorption heat pumpp_ahp (heating COP1.7)；Additionally, new lithium bromide absorption chillerp_lbac (热转cooling COP1.3)；gas-fired boiler efficiency of 0.94",
+    "en_answer": "4916307",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 0.0,
+      "fc_inst": 0.0,
+      "hst_inst": 0.0,
+      "gb_inst": 1994.7013577751516,
+      "tank_inst": 10000.0,
+      "whr_inst": 0.0,
+      "ahp_inst": 0.0,
+      "lbac_inst": 1234.0151918284112
+    }
+  },
+  {
+    "id": 118,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Tianjin, China. The system will incorporate equipment such as electrolyzers, magnetic levitation centrifugal chillers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,600 kW, the peak heating load stands at 2,400 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.48 to 1.28 yuan/kWh. The hydrogen purchase price is 19.0 yuan/kg and the selling price is 14.0 yuan/kg. Combined modification: : Additionally, new district heating (0.28 yuan/ kWh, upper limit1500 kW)；Additionally, new magnetic levitation centrifugal chillerp_mcc (COP6.8, 装机500-2500 kW)；基本电费30元/kVA/ month；天然气阶梯价格",
+    "en_answer": "5051646",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "el_inst": 83.05484394496425,
+      "ghp_inst": 206.40249470196434,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "mcc_inst": 2500.0,
+      "max_demand": 1295.0150788442443
+    }
+  },
+  {
+    "id": 119,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Liaoning Province, China. The system will incorporate equipment such as gas internal combustion engines, fuel cells, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 1,400 kW, the peak heating load stands at 3,000 kW, and the peak electrical load is 1,100 kW, with the building covering a floor area of 13,500 square meters. The time-of-use electricity prices range from 0.36 to 1.16 yuan/kWh. The hydrogen purchase price is 17.5 yuan/kg and the selling price is 13.5 yuan/kg. Combined modification: : Additionally, new gas internal combustion enginep_gice (power generation efficiency0.42, waste heat recovery efficiency of 0.40, 装机400-2000 kW)；调峰subsidy (削峰0.5 yuan/ kWh, 填谷0.3 yuan/ kWh)；设备安装subsidy (photovoltaic200 yuan/ kW)",
+    "en_answer": "344815",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.002023502947906643,
+      "ghp_inst": 301.90478079374384,
+      "gtw_inst": 0.0,
+      "gice_inst": 2000.0,
+      "hst_inst": 0.009378387215875587,
+      "tank_inst": 9999.999965775492
+    }
+  },
+  {
+    "id": 120,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Jilin Province, China. The system will incorporate equipment such as 电蓄热锅炉, fuel cells, electrolyzers, chillers, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and buying and selling hydrogen. The annual peak cooling load of the system reaches 600 kW, the peak heating load stands at 4,000 kW, and the peak electrical load is 550 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 16.5 yuan/kg and the selling price is 12.5 yuan/kg. Combined modification: : cold region供热优化. Additionally, new 电蓄热锅炉p_eshb (solid thermal storage, 容量 upper limit18000 kWh)；热泵low-temperature degradation (0°C以下COP降35%)；photovoltaic度电subsidy0.1 yuan/ kWh；hydrogen storage tank容量600 kg lower limit",
+    "en_answer": "2212559",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 63.96929557333791,
+      "el_inst": 616.9913657702828,
+      "ghp_inst": 503.83268083578366,
+      "hst_inst": 600.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 9.962922488244239,
+      "eshb_inst": 1663.6686200101576
+    }
+  },
+  {
+    "id": 121,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Heilongjiang Province, China. The system will incorporate equipment such as biomass boilers, fuel cells, electrolyzers, chillers, wind turbines, ground-source heat pumps, hot water tanks, hydrogen storage tanks, photovoltaic panels, and flywheel energy storage. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 500 kW, the peak heating load stands at 4,500 kW, and the peak electrical load is 500 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 15.5 yuan/kg and the selling price is 12.0 yuan/kg. Combined modification: : off-grid零碳能源系统. Additionally, new wind turbinep_wt (capacity factor0.30)；Additionally, new biomass boilerp_bb (thermal efficiency of 0.85, 碳中 and )；Additionally, new flywheel energy storagep_fw (容量150 kWh)；fuel cellwaste heat recovery；氢燃烧制热可选",
+    "en_answer": "-2513424",
+    "en_variable": {
+      "pv_inst": 2898.549012517414,
+      "wt_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 2920.5849771253174,
+      "ghp_inst": 81.27652264329504,
+      "bb_inst": 3582.2811098427355,
+      "ch_inst": 17.243971488468578,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "fw_inst": 0.0
+    }
+  },
+  {
+    "id": 122,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Shaanxi Province, China. The system will incorporate equipment such as electric heating films, compressed air energy storage (CAES), electrolyzers, chillers, wind turbines, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 400 kW, the peak heating load stands at 4,200 kW, and the peak electrical load is 450 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.24 to 1.04 yuan/kWh. The hydrogen purchase price is 14.0 yuan/kg and the selling price is 10.5 yuan/kg. Combined modification: : 大规模renewable energy消纳. Additionally, new wind turbinep_wt (装机1000-6000 kW, capacity factor0.32)；Additionally, new compressed air energy storagep_caes (容量 upper limit15000 kWh)；Additionally, new electric heating filmp_ehf (低谷电制热)；氢气销售 is 主要收益来源",
+    "en_answer": "-1909547",
+    "en_variable": {
+      "pv_inst": 0.0,
+      "wt_inst": 6000.0,
+      "el_inst": 1598.1567741449178,
+      "hst_inst": 0.0,
+      "caes_inst": 15000.0,
+      "ghp_inst": 251.0744381158334,
+      "ehf_inst": 3312.0,
+      "tank_inst": 10000.0,
+      "ch_inst": 0.046274764761048
+    }
+  },
+  {
+    "id": 123,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Xinjiang Uyghur Autonomous Region, China. The system will incorporate equipment such as concentrated solar power (CSP), electrolyzers, ground-source heat pumps, evaporative cooling air conditioners, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 900 kW, the peak heating load stands at 3,600 kW, and the peak electrical load is 700 kW, with the building covering a floor area of 12,000 square meters. The time-of-use electricity prices range from 0.26 to 1.06 yuan/kWh. The hydrogen purchase price is 14.5 yuan/kg and the selling price is 11.0 yuan/kg. Combined modification: : 西北arid region能源系统. Additionally, new concentrated solar power (CSP)p_csp (光热转电 efficiency of 0.18, molten salt thermal storage6小时)；Additionally, new evaporative cooling air conditionerp_ec (COP15, 干燥气候适用)；photovoltaic efficiency of 0.24；electrolyzer装机2000-10000 kW",
+    "en_answer": "1924820",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "csp_inst": 0.0,
+      "el_inst": 2000.0,
+      "hst_inst": 0.0,
+      "ghp_inst": 925.3030961903386,
+      "tank_inst": 10000.0,
+      "ec_inst": 44.57682472137767
+    }
+  },
+  {
+    "id": 124,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Gansu Province, China. The system will incorporate equipment such as hydrogen boilers, fuel cells, electrolyzers, ground-source heat pumps, hot water tanks, 氢气管道, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 800 kW, the peak heating load stands at 3,400 kW, and the peak electrical load is 650 kW, with the building covering a floor area of 13,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 15.0 yuan/kg and the selling price is 12.0 yuan/kg. Combined modification: : 氢能多元利用系统. Additionally, new hydrogen pipelinep_hp (接入区域氢网)；Additionally, new hydrogen boilerp_hb (氢燃烧制thermal efficiency of 0.92, 零碳)；氢气价格按季度波动；绿色建筑认证奖励",
+    "en_answer": "2371607",
+    "en_variable": {
+      "pv_inst": 7945.488873837536,
+      "fc_inst": 17.42783810014729,
+      "el_inst": 243.67337579231616,
+      "ghp_inst": 789.367021356549,
+      "hst_inst": 21.16460616393539,
+      "tank_inst": 9999.98719349832
+    }
+  },
+  {
+    "id": 125,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Qinghai Province, China. The system will incorporate equipment such as fuel cells, electrolyzers, liquid air energy storage (LAES), high-temperature heat pumps, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 600 kW, the peak heating load stands at 3,800 kW, and the peak electrical load is 550 kW, with the building covering a floor area of 10,000 square meters. The time-of-use electricity prices range from 0.28 to 1.08 yuan/kWh. The hydrogen purchase price is 14.0 yuan/kg and the selling price is 10.5 yuan/kg. Combined modification: : plateauoff-grid多能互补系统. Additionally, new high-temperature heat demand (constant60 kW)；Additionally, new high-temperature heat pumpp_hhp (heating COP1.8, 高海拔影响)；Additionally, new liquid air energy storagep_laes (容量 upper limit25000 kWh)；wind turbinecapacity factor0.35",
+    "en_answer": "-3697668",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "wt_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 3532.219196321064,
+      "hhp_inst": 10000.0,
+      "ghp_inst": 977.360377241997,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "laes_inst": 25000.0
+    }
+  },
+  {
+    "id": 126,
+    "en_question": "Now it is necessary to construct an integrated energy system in a apartment located in Shaanxi Province, China. The system will incorporate equipment such as electric boilers, fuel cells, electrolyzers, chillers, wind turbines, ground-source heat pumps, hot water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 700 kW, the peak heating load stands at 3,500 kW, and the peak electrical load is 600 kW, with the building covering a floor area of 11,000 square meters. The time-of-use electricity prices range from 0.3 to 1.1 yuan/kWh. The hydrogen purchase price is 15.5 yuan/kg and the selling price is 12.0 yuan/kg. Combined modification: : wind-solar complementary制氢系统. Additionally, new wind turbinep_wt (装机800-5000 kW, capacity factor0.28)；Additionally, new electric boilerp_eb (电转thermal efficiency of 0.97)；carbon emission cost70 yuan/ton；electrolyzerO&M cost0.4 yuan/ kg氢气；氢气销售收益最大化",
+    "en_answer": "-97348",
+    "en_variable": {
+      "pv_inst": 0.0,
+      "wt_inst": 5000.0,
+      "fc_inst": 0.0,
+      "el_inst": 1072.3663965813091,
+      "eb_inst": 1871.4886530613635,
+      "ghp_inst": 356.9343761905873,
+      "ch_inst": 0.0,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 127,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Beijing, China. The system will incorporate equipment such as electric thermal storage devices, free cooling systems, fuel cells, electrolyzers, high-temperature heat pumps, wind turbines, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows buying and selling hydrogen. The annual peak cooling load of the system reaches 400 kW, the peak heating load stands at 4,200 kW, and the peak electrical load is 500 kW, with the building covering a floor area of 9,000 square meters. The time-of-use electricity prices range from 0.22 to 1.02 yuan/kWh. The hydrogen purchase price is 13.5 yuan/kg and the selling price is 10.0 yuan/kg. Combined modification: : plateau极端environmentaloff-grid系统. Additionally, new high-temperature heat demand (constant100 kW)；Additionally, new high-temperature heat pumpp_hhp (heating COP1.7, 高海拔降效)；Additionally, new free cooling systemp_fc (启动温度10°C)；photovoltaic efficiency of 0.26；fuel cellO&M cost1.2 yuan/ kg氢气",
+    "en_answer": "2746303",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "hhp_inst": 0.0,
+      "esd_inst": 68.59205059666078,
+      "ghp_inst": 651.5760609535581,
+      "fc_inst": 1005.9960995364183,
+      "el_inst": 933.5182134239027,
+      "hst_inst": 141.56774042432772,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 128,
+    "en_question": "Now it is necessary to construct an integrated energy system in a restaurant located in Guangdong Province, China. The system will incorporate equipment such as air-source heat pumps, variable refrigerant flow (VRF) systems, ice storage systems, solar water heating systems, hot water tanks, cold water tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it. The annual peak cooling load of the system reaches 3,500 kW, the peak heating load stands at 400 kW, and the peak electrical load is 2,400 kW, with the building covering a floor area of 18,000 square meters. The time-of-use electricity prices range from 0.62 to 1.5 yuan/kWh. The hydrogen purchase price is 22.0 yuan/kg and the selling price is 17.0 yuan/kg. Combined modification: : tropical高冷负荷建筑. Additionally, new ice storage systemp_ice (COP4.5, 蓄冰容量 upper limit12000 kWh)；Additionally, new variable refrigerant flow (VRF) systemp_vrf (cooling COP4.8)；Additionally, new solar water heating systemp_swh；demand charge45 yuan/ kW/ month；carbon emission cost95 yuan/ton",
+    "en_answer": "17840783",
+    "en_variable": {
+      "p_demand_max": 2842.491696523664,
+      "pv_inst": 10000.0,
+      "swh_inst": 0.0,
+      "hp_inst": 679.0,
+      "vrf_inst": 0.0,
+      "ice_inst": 0.0,
+      "tank_inst": 10000.0
+    }
+  },
+  {
+    "id": 129,
+    "en_question": "Now it is necessary to construct an integrated energy system in a office building located in Guangxi Zhuang Autonomous Region, China. The system will incorporate equipment such as radiant cooling systems, fuel cells, electrolyzers, hot water tanks, sewage-source heat pumps, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it and buying and selling hydrogen. The annual peak cooling load of the system reaches 2,600 kW, the peak heating load stands at 800 kW, and the peak electrical load is 1,900 kW, with the building covering a floor area of 21,000 square meters. The time-of-use electricity prices range from 0.56 to 1.4 yuan/kWh. The hydrogen purchase price is 20.0 yuan/kg and the selling price is 15.0 yuan/kg. Combined modification: : 多能源接入综合能源系统. Additionally, new district cooling (0.40 yuan/ kWh, upper limit1000 kW) and district heating (0.30 yuan/ kWh, upper limit500 kW)；Additionally, new sewage-source heat pumpp_swhp (heating COP4.3, cooling COP5.2)；Additionally, new radiant cooling systemp_rc",
+    "en_answer": "6347978",
+    "en_variable": {
+      "pv_inst": 10000.0,
+      "fc_inst": 0.0,
+      "el_inst": 0.0,
+      "hst_inst": 0.0,
+      "tank_inst": 10000.0,
+      "swhp_inst": 163.14341558362165,
+      "rc_inst": 1200.4719317970269
+    }
+  },
+  {
+    "id": 130,
+    "en_question": "Now it is necessary to construct an integrated energy system in a hotel located in Sichuan Province, China. The system will incorporate equipment such as medium-temperature heat pumps, steam heat exchangers, fuel cells, electrolyzers, heat recovery chillers, ground-source heat pumps, hot water tanks, cold water tanks, hydrogen storage tanks, and photovoltaic panels. This energy system allows purchasing electricity from the power grid and feeding surplus electricity back to it, buying and selling hydrogen, and purchasing steam. The annual peak cooling load of the system reaches 1,800 kW, the peak heating load stands at 2,200 kW, and the peak electrical load is 1,400 kW, with the building covering a floor area of 16,000 square meters. The time-of-use electricity prices range from 0.45 to 1.25 yuan/kWh. The hydrogen purchase price is 18.5 yuan/kg and the selling price is 14.0 yuan/kg. Steam can be purchased at 170.0 yuan/ton. Combined modification: : 多温度等级热能利用系统. Additionally, new medium-temperature heat demand (65-80°C, constant150 kW) and steam能量；Additionally, new medium-temperature heat pumpp_mthp (heating COP2.8)；Additionally, new heat recovery chillerp_hrc (cooling COP5.0, 热recovery efficiency0.85)；设备depreciation residual value计算；multi-objective optimization (economic+environmental)",
+    "en_answer": "6302827",
+    "en_variable": {
+      "pv_inst": 9998.29670240317,
+      "fc_inst": 0.32728933638979435,
+      "el_inst": 0.1152400635636521,
+      "ghp_inst": 585.0298379613125,
+      "hst_inst": 0.21683202495327503,
+      "tank_inst": 9999.999771846991
+    }
+  }
+]
