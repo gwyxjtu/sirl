@@ -27,6 +27,12 @@ exp_name='partialKL_2x4090_qwen3_4b_instruct_2507'
 TRAIN_MAX_SAMPLES=${TRAIN_MAX_SAMPLES:-10}
 VAL_MAX_SAMPLES=${VAL_MAX_SAMPLES:-5}
 TOTAL_EPOCHS=${TOTAL_EPOCHS:-1}
+# Checkpoint 策略:
+# - save_freq 必须 >0 才会存盘；设为很大值表示只在最后一步 (is_last_step) 存一次。
+# - 默认只存 model 权重，不存 optimizer/extra（VeRL 默认含 optimizer，体积约为 model 的 2–3 倍）。
+#   optimizer 仅断点续训需要；若要完整 checkpoint 可覆盖:
+#   actor_rollout_ref.actor.checkpoint.save_contents='[model,optimizer,extra]'
+SAVE_FREQ=${SAVE_FREQ:-999999}
 MAX_PROMPT_LENGTH=${MAX_PROMPT_LENGTH:-2048}
 MAX_RESPONSE_LENGTH=${MAX_RESPONSE_LENGTH:-1024}
 MAX_MODEL_LEN=$((MAX_PROMPT_LENGTH + MAX_RESPONSE_LENGTH))
@@ -106,6 +112,8 @@ $LAUNCH $PYTHON -m verl.trainer.partialKL_ppo \
  actor_rollout_ref.actor.fsdp_config.param_offload=True \
  actor_rollout_ref.actor.fsdp_config.optimizer_offload=True \
  actor_rollout_ref.actor.fsdp_config.use_torch_compile=False \
+ actor_rollout_ref.actor.checkpoint.save_contents='[model]' \
+ actor_rollout_ref.actor.checkpoint.load_contents='[model]' \
  actor_rollout_ref.rollout.max_num_batched_tokens=$MAX_MODEL_LEN \
  actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu=1 \
  actor_rollout_ref.rollout.dtype=float16 \
@@ -124,7 +132,7 @@ $LAUNCH $PYTHON -m verl.trainer.partialKL_ppo \
  trainer.logger=['console'] \
  trainer.n_gpus_per_node=2 \
  trainer.nnodes=1 \
- trainer.save_freq=25 \
+ trainer.save_freq=$SAVE_FREQ \
  trainer.test_freq=500 \
  trainer.val_before_train=False \
  trainer.default_local_dir=$output_dir \

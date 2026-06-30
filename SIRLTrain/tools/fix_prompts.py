@@ -32,6 +32,98 @@ Print the optimal objective value and optimal solution clearly.
 Do NOT include any thinking steps or mathematical model sections.
 Only output the <python> code block."""
 
+# ============================================================
+# Enhanced system prompt with a worked Gurobi few-shot example.
+# Use --with-example flag to select this prompt.
+# Designed to demonstrate: binary vars, Big-M, conditional
+# penalty, correct API (ObjVal/.X/vtype), demand/capacity.
+# ============================================================
+DEFAULT_SYSTEM_WITH_EXAMPLE = """You are a helpful Assistant with expertise in mathematical modeling and the Gurobi solver.
+Given an optimization problem, provide the Gurobi Python code to solve it.
+
+Your response MUST follow this structure exactly:
+
+<python>
+Provide the complete Gurobi Python code to implement the model.
+IMPORTANT: Always include `from gurobipy import *` at the top.
+Print the optimal objective value and optimal solution clearly.
+</python>
+
+--- EXAMPLE (study this before writing your code) ---
+
+Problem: A factory must decide which of 2 machines (M1, M2) to operate to produce 2 products (A, B).
+- Demand: A=100, B=150 units
+- Machine capacities: M1=200, M2=180 hours
+- Production time per unit: M1→A:2h, M1→B:3h, M2→A:4h, M2→B:2h
+- Operating cost per machine: M1=$500, M2=$400 (only when used)
+- If total production < 200 units, pay a one-time penalty of $1000. Otherwise no penalty.
+
+<python>
+from gurobipy import *
+
+# Data
+demand  = {'A': 100, 'B': 150}
+cap     = {'M1': 200, 'M2': 180}
+hours   = {('M1','A'):2, ('M1','B'):3, ('M2','A'):4, ('M2','B'):2}
+op_cost = {'M1': 500, 'M2': 400}
+penalty = 1000
+penalty_threshold = 200
+
+model = Model("Factory")
+
+machines, products = ['M1','M2'], ['A','B']
+
+# --- Variables ---
+x = model.addVars(machines, products, lb=0, vtype=GRB.CONTINUOUS, name="x")
+y = model.addVars(machines, vtype=GRB.BINARY, name="y")
+z = model.addVar(vtype=GRB.BINARY, name="z")   # 1 = no penalty
+
+# --- Objective ---
+total = sum(x[m,p] for m in machines for p in products)
+model.setObjective(
+    sum(op_cost[m] * y[m] for m in machines) + penalty * (1 - z),
+    GRB.MINIMIZE
+)
+
+# --- Constraints ---
+# 1. Meet demand
+for p in products:
+    model.addConstr(sum(x[m,p] for m in machines) == demand[p], f"Demand_{p}")
+
+# 2. Capacity (Big-M: only produce if machine is selected)
+for m in machines:
+    model.addConstr(sum(hours[m,p] * x[m,p] for p in products)
+                    <= cap[m] * y[m], f"Capacity_{m}")
+
+# 3. Penalty indicator (z=1 when total >= threshold, else z=0)
+model.addConstr(total >= penalty_threshold * z, "Penalty_Indicator")
+
+# --- Solve ---
+model.optimize()
+
+if model.status == GRB.OPTIMAL:
+    print("Optimal Objective Value:", model.ObjVal)
+    for m in machines:
+        if y[m].X > 0.5:
+            print(f"{m} selected")
+            for p in products:
+                if x[m,p].X > 0:
+                    print(f"  {p}: {x[m,p].X}")
+else:
+    print("No optimal solution, status:", model.status)
+</python>
+
+--- KEY GUROBI RULES (must follow) ---
+1. Use model.ObjVal (capital O,V) — NOT objVal; use var.X (capital X) — NOT var.x.
+2. Binary: vtype=GRB.BINARY; Integer: vtype=GRB.INTEGER; Continuous: vtype=GRB.CONTINUOUS.
+3. Conditional penalties → binary indicator var + Big-M (see z above).  Do NOT use addConstr(>= threshold) + addConstr(<= threshold).
+4. Flow variables must be non-negative (lb=0).  lb=-GRB.INFINITY is wrong.
+5. Always check model.status == GRB.OPTIMAL before printing results.
+---
+
+Do NOT include any thinking steps or mathematical model sections.
+Only output the <python> code block."""
+
 DEFAULT_USER_TEMPLATE = "Solve the following mathematical modeling problem using Gurobi.\n{question}\nProvide only the Gurobi Python code."
 
 
@@ -49,14 +141,31 @@ def extract_question(user_content: str) -> str:
             s = s[:-len(suffix)].rstrip()
             break
 
+    # Strip "Provide only the Gurobi Python code." suffix (from fixed prompts)
+    for suffix in ("\nProvide only the Gurobi Python code.",
+                   "\nProvide only the Gurobi Python code",
+                   "Provide only the Gurobi Python code.",
+                   "Provide only the Gurobi Python code"):
+        if s.endswith(suffix):
+            s = s[:-len(suffix)].rstrip()
+            break
+
     # Strip known prefixes
     for prefix in (
+        "Solve the following mathmetical modeling problem using Gurobi.",
+        "Solve the following mathematical modeling problem using Gurobi.",
         "Solve the following mathmetical modeling problem",
         "Solve the following mathematical modeling problem",
     ):
         if s.lower().startswith(prefix.lower()):
             s = s[len(prefix):].strip()
             break
+
+    # Strip leading "using Gurobi." (leftover from prefix match)
+    if s.startswith("using Gurobi."):
+        s = s[len("using Gurobi."):].strip()
+    elif s.startswith("using Gurobi"):
+        s = s[len("using Gurobi"):].strip()
 
     return s
 
@@ -128,7 +237,7 @@ def process_one(label, path, system_content, suffix, overwrite, dry_run, check_l
         for i in range(min(100, n)):
             ids = tokenizer.apply_chat_template(df["prompt"].iloc[i], add_generation_prompt=True, tokenize=True)
             max_tok = max(max_tok, len(ids))
-        print(f"  max prompt tokens (first 100 rows): {max_tok}  (limit: 2048)")
+        print(f"  max prompt tokens (first 100 rows): {max_tok}  (limit: 4096)")
 
     if dry_run:
         print(f"  [DRY-RUN] Would write {label}\n")
@@ -141,10 +250,11 @@ def process_one(label, path, system_content, suffix, overwrite, dry_run, check_l
 
 def main():
     ap = argparse.ArgumentParser(description="Patch system/user prompts in Gurobi OR parquet datasets")
-    ap.add_argument("--trainset", default="/home/guo/LLM/Verl/verl/trainset/gurobi_examples_OR_train.parquet")
-    ap.add_argument("--testset",  default="/home/guo/LLM/Verl/verl/trainset/gurobi_examples_OR_test.parquet")
+    ap.add_argument("--trainset", default="/root/llm/sirl/SIRLTrain/trainset/gurobi_examples_OR_train.parquet")
+    ap.add_argument("--testset",  default="/root/llm/sirl/SIRLTrain/trainset/gurobi_examples_OR_test.parquet")
     ap.add_argument("--system-file", default=None, help="File containing new system prompt")
     ap.add_argument("--system-str",  default=None, help="New system prompt as inline string")
+    ap.add_argument("--with-example", action="store_true", help="Use DEFAULT_SYSTEM_WITH_EXAMPLE (few-shot)")
     ap.add_argument("--suffix", default="_fixed", help="Output file suffix (default: _fixed)")
     ap.add_argument("--overwrite", action="store_true", help="Overwrite original files")
     ap.add_argument("--dry-run", action="store_true", help="Show diff without writing")
@@ -159,6 +269,8 @@ def main():
             system_content = f.read().strip()
     elif args.system_str:
         system_content = args.system_str
+    elif args.with_example:
+        system_content = DEFAULT_SYSTEM_WITH_EXAMPLE
     else:
         system_content = DEFAULT_SYSTEM
 
@@ -168,7 +280,7 @@ def main():
         try:
             from transformers import AutoTokenizer
             tokenizer = AutoTokenizer.from_pretrained(
-                "/home/guo/LLM/SIRL/Qwen3-4B-Instruct-2507", trust_remote_code=True
+                "/root/autodl-tmp/models/Qwen3-8B", trust_remote_code=True
             )
         except Exception as e:
             print(f"[WARN] tokenizer load failed, skipping length check: {e}")

@@ -16,6 +16,16 @@ _DROP_KEYS = frozenset(
 
 
 class GurobiRLHFDataset(RLHFDataset):
+    def _build_messages(self, example: dict, key: str):
+        messages = example[key]
+        if hasattr(messages, "tolist"):
+            messages = messages.tolist()
+        if isinstance(messages, dict):
+            messages = [messages]
+        if isinstance(messages, str):
+            messages = [{"role": "user", "content": messages}]
+        return [dict(message) for message in messages]
+
     def __getitem__(self, item):
         row = super().__getitem__(item)
         for key in _DROP_KEYS:

@@ -42,9 +42,11 @@ def insert_print(code: str, solver_name: str) -> str:
         code = re.sub(pattern, rf'\1\2\n{status_check}', code, flags=re.M)
     return code
 
-def insert_lp_generation(code: str, output_name: str) -> str:
+def insert_lp_generation(code: str, output_name: str, skip_optimize: bool = False) -> str:
     """在 optimize() 前注入 model.write('xxx.lp')，让 Gurobi 写出 LP 文件；
-    同时在 optimize 后打印最优目标值。"""
+    同时在 optimize 后打印最优目标值。
+    
+    当 skip_optimize=True 时，只写 LP 文件不运行求解（用于离线预处理）。"""
     model_pattern = r'^(\s*)(\w+)\.(optimize|solve)\(\)'
     try:
         code = str(code)
@@ -55,15 +57,20 @@ def insert_lp_generation(code: str, output_name: str) -> str:
         indent = model_match.group(1)
         model_name = model_match.group(2)
         pattern = r'^(\s*)(' + model_name + r'\.optimize\(\))'
-        status_check = (
-            f"{indent}{model_name}.write('{output_name}')\n"
-            f"{indent}{model_name}.optimize()\n"
-            f"{indent}if {model_name}.status == GRB.OPTIMAL:\n"
-            f"{indent}    print(f'Just print the best obj: {{{model_name}.ObjVal}}')\n"
-            f"{indent}else:\n"
-            f"{indent}    print('No optimal solution found, status:', {model_name}.status)"
-        )
-        code = re.sub(pattern, rf'\1\2\n{status_check}', code, flags=re.M)
+        if skip_optimize:
+            # 只写 LP 不求解（离线预处理专用）：替换 optimize() 为 write()
+            replacement = f"{indent}{model_name}.write('{output_name}')"
+            code = re.sub(pattern, replacement, code, flags=re.M)
+        else:
+            status_check = (
+                f"{indent}{model_name}.write('{output_name}')\n"
+                f"{indent}{model_name}.optimize()\n"
+                f"{indent}if {model_name}.status == GRB.OPTIMAL:\n"
+                f"{indent}    print(f'Just print the best obj: {{{model_name}.ObjVal}}')\n"
+                f"{indent}else:\n"
+                f"{indent}    print('No optimal solution found, status:', {model_name}.status)"
+            )
+            code = re.sub(pattern, rf'\1\2\n{status_check}', code, flags=re.M)
     return code
 
 def extract_code_block(llm_output: str, solver_name, lp_output_path: str = None) -> str:
@@ -143,6 +150,8 @@ def parse_lp_structure(lp_path: str) -> dict:
             objective_type: 'Minimize' / 'Maximize' / ''
             num_variables: int (从 Bounds 段估算)
             num_constraints: int (从 Subject To 段估算)
+            num_binary: int (Binaries 段变量数)
+            num_integer: int (Generals 段变量数，不含 Binary)
             has_quadratic: bool (目标中有 ^2 或 * 等二次项)
             has_integers: bool (General 或 Binary 段存在)
             raw_lines: list of lines
@@ -151,6 +160,8 @@ def parse_lp_structure(lp_path: str) -> dict:
         "objective_type": "",
         "num_variables": 0,
         "num_constraints": 0,
+        "num_binary": 0,
+        "num_integer": 0,
         "has_quadratic": False,
         "has_integers": False,
         "raw_lines": [],
@@ -166,11 +177,12 @@ def parse_lp_structure(lp_path: str) -> dict:
     in_section = None
     constraint_count = 0
     var_count = 0
+    binary_count = 0
+    integer_count = 0
 
     for line in lines:
         stripped = line.strip()
 
-        # 识别段落
         if stripped.startswith("Minimize") or stripped.startswith("Maximize"):
             result["objective_type"] = stripped.split()[0]
             in_section = "objective"
@@ -181,43 +193,182 @@ def parse_lp_structure(lp_path: str) -> dict:
         elif stripped == "Bounds":
             in_section = "bounds"
             continue
-        elif stripped == "Generals" or stripped == "Binaries":
+        elif stripped == "Binaries":
             result["has_integers"] = True
-            in_section = "integers"
+            in_section = "binaries"
+            continue
+        elif stripped == "Generals":
+            result["has_integers"] = True
+            in_section = "generals"
             continue
         elif stripped == "End":
             break
 
-        # 计数
         if in_section == "objective":
             if "^2" in stripped or " * " in stripped:
                 result["has_quadratic"] = True
 
         elif in_section == "constraints":
-            # 每个非空、非注释行算一个约束名（Gurobi LP 格式： name: expr）
             if stripped and not stripped.startswith("\\") and ":" in stripped:
                 constraint_count += 1
 
         elif in_section == "bounds":
-            # 每个独立变量一行： x[A] <= 0.3  或 0 <= x_1 <= 1
             if stripped:
                 var_count += 1
 
-    result["num_variables"] = var_count
+        elif in_section == "binaries":
+            if stripped:
+                # 每行可能有多个空格分隔的变量名
+                binary_count += len(stripped.split())
+
+        elif in_section == "generals":
+            if stripped:
+                integer_count += len(stripped.split())
+
+    # 总变量数 = Bounds 段 + Binaries/Generals 段（后者可能不重复出现在 Bounds）
+    result["num_variables"] = var_count + binary_count + integer_count
     result["num_constraints"] = constraint_count
+    result["num_binary"] = binary_count
+    result["num_integer"] = integer_count
 
     return result
 
-def lp_structure_reward(lp_path: str) -> float:
+
+def extract_lp_stats_from_code(reference_code: str, lp_path: str | None = None, timeout: int = 30) -> dict | None:
+    """
+    执行 reference 代码，写出 LP 文件，解析其结构统计。
+
+    用于离线预处理：对每条训练样本，用 reference/output 代码跑一遍，
+    提取 GT 的 LP 结构统计，存入 extra_info.lp_ref。
+
+    Args:
+        reference_code: 参考代码（字符串）
+        lp_path: 输出 LP 文件路径（None 则用临时文件）
+        timeout: 执行超时秒数
+
+    Returns:
+        dict with keys: objective_type, num_variables, num_constraints,
+                        num_binary, num_integer, has_quadratic
+        若执行失败返回 None
+    """
+    import tempfile
+    if lp_path is None:
+        tmp_fd, lp_path = tempfile.mkstemp(suffix=".lp", prefix="gt_lp_")
+        os.close(tmp_fd)
+        cleanup = True
+    else:
+        os.makedirs(os.path.dirname(lp_path) or ".", exist_ok=True)
+        cleanup = False
+
+    try:
+        # 注入 LP 生成（跳过求解，只写 LP 文件）
+        code = insert_lp_generation(reference_code, lp_path, skip_optimize=True)
+        if code is None:
+            return None
+
+        # 在子进程中执行（隔离环境，避免污染当前进程）
+        result = subprocess.run(
+            ["python3", "-c", code],
+            capture_output=True, text=True, timeout=timeout,
+            env={
+                **os.environ,
+                "PYTHONDONTWRITEBYTECODE": "1",
+                # 绕过代理，避免 Gurobi WLS TLS 错误
+                "https_proxy": "",
+                "HTTPS_PROXY": "",
+                "http_proxy": "",
+                "HTTP_PROXY": "",
+                "ALL_PROXY": "",
+                "all_proxy": "",
+            },
+        )
+
+        if not os.path.exists(lp_path) or os.path.getsize(lp_path) == 0:
+            return None
+
+        stats = parse_lp_structure(lp_path)
+        # 只保留轻量统计字段（不含 raw_lines）
+        return {
+            "objective_type": stats["objective_type"],
+            "num_variables": stats["num_variables"],
+            "num_constraints": stats["num_constraints"],
+            "num_binary": stats["num_binary"],
+            "num_integer": stats["num_integer"],
+            "has_quadratic": stats["has_quadratic"],
+        }
+    except Exception:
+        return None
+    finally:
+        if cleanup:
+            try:
+                os.remove(lp_path)
+            except OSError:
+                pass
+
+
+def _within_tolerance(pred: int, gt: int, rel_tol: float = 0.3, abs_tol: int = 2) -> bool:
+    """检查 pred 是否在 gt 的容差范围内: |pred - gt| <= max(abs_tol, rel_tol * gt)"""
+    threshold = max(abs_tol, int(rel_tol * gt))
+    return abs(pred - gt) <= threshold
+
+
+def _tolerance_score(pred: int, gt: int, rel_tol: float = 0.3, abs_tol: int = 2) -> float:
+    """根据偏离程度给分 (0.0~1.0)：
+    - 在容差内: 1.0
+    - 偏离 1 倍容差: 0.5
+    - 偏离 3 倍容差以上: 0.0
+    线性插值介于之间。
+
+    特殊处理: 当 GT=0 时（不需要该类型变量），pred=0 给满分，pred>0 线性递减。
+    """
+    deviation = abs(pred - gt)
+
+    # GT 为 0: 期望 pred 也为 0
+    if gt == 0:
+        if pred == 0:
+            return 1.0
+        # pred > 0, penalty proportional to deviation
+        threshold = abs_tol or 1
+        ratio = deviation / threshold
+        if ratio >= 3.0:
+            return 0.0
+        return max(0.0, 1.0 - (ratio - 1.0) / 2.0)
+
+    threshold = max(abs_tol, int(rel_tol * gt))
+    # 当 threshold 为 0 但 GT > 0 时（小数值），使用 exact match
+    if threshold == 0:
+        threshold = 1
+
+    if deviation <= threshold:
+        return 1.0
+    ratio = deviation / threshold
+    if ratio >= 3.0:
+        return 0.0
+    return max(0.0, 1.0 - (ratio - 1.0) / 2.0)
+
+
+def lp_structure_reward(lp_path: str, gt_stats: dict | None = None) -> float:
     """
     基于 LP 文件结构给出分数（0.0 ~ 0.5）。
 
-    检查项：
-        - 有目标函数:                                         +0.10
-        - 有至少 2 个约束:                                    +0.15
-        - 有至少 2 个变量:                                    +0.10
-        - 变量是整数/二进制 (如果有 Generals/Binaries 段):     +0.10
-        - 有二次项 (说明模型复杂度不弱):                        +0.05
+    当提供 gt_stats 时，与 ground truth 结构做对比打分：
+        - 目标函数类型一致 (Min/Max):                           +0.05
+        - 变量数接近 (容差 max(2, 30%)):                        +0.10
+        - 约束数接近 (容差 max(2, 30%)):                        +0.10
+        - Binary 变量数接近 (容差 max(1, 20%)):                 +0.10
+        - Integer 变量数接近 (容差 max(1, 20%)):                +0.10
+        - 二次项匹配:                                           +0.05
+
+    未提供 gt_stats 时，使用启发式检查：
+        - 有目标函数:                                           +0.10
+        - 有至少 2 个约束:                                      +0.15
+        - 有至少 2 个变量:                                      +0.10
+        - 变量是整数/二进制:                                    +0.10
+        - 有二次项:                                             +0.05
+
+    Args:
+        lp_path: 模型生成的 LP 文件路径
+        gt_stats: ground truth 结构统计（dict, 来自 extra_info.lp_ref）
 
     Returns:
         float: 0.0 ~ 0.5
@@ -226,20 +377,61 @@ def lp_structure_reward(lp_path: str) -> float:
         return 0.0
 
     info = parse_lp_structure(lp_path)
+
+    if gt_stats is None:
+        # ── 旧版启发式打分（向后兼容）──
+        score = 0.0
+        if info["objective_type"]:
+            score += 0.10
+        if info["num_constraints"] >= 2:
+            score += 0.15
+        if info["num_variables"] >= 2:
+            score += 0.10
+        if info["has_integers"]:
+            score += 0.10
+        if info["has_quadratic"]:
+            score += 0.05
+        return score
+
+    # ── GT 对比打分 ──
     score = 0.0
 
-    if info["objective_type"]:
-        score += 0.10                     # 有目标函数
-    if info["num_constraints"] >= 2:
-        score += 0.15                     # 有足够约束
-    if info["num_variables"] >= 2:
-        score += 0.10                     # 有足够变量
-    if info["has_integers"]:
-        score += 0.10                     # 有整数/二进制变量
-    if info["has_quadratic"]:
-        score += 0.05                     # 有二次项
+    # 1. 目标类型一致
+    gt_obj = gt_stats.get("objective_type", "")
+    if info["objective_type"] and gt_obj and info["objective_type"] == gt_obj:
+        score += 0.05
 
-    return score
+    # 2. 变量数接近
+    gt_vars = gt_stats.get("num_variables", 0)
+    score += _tolerance_score(info["num_variables"], gt_vars, rel_tol=0.3, abs_tol=2) * 0.10
+
+    # 3. 约束数接近
+    gt_cons = gt_stats.get("num_constraints", 0)
+    score += _tolerance_score(info["num_constraints"], gt_cons, rel_tol=0.3, abs_tol=2) * 0.10
+
+    # 4. Binary 变量数接近（严格：若一方为 0 则最多 0.3 分）
+    gt_bin = gt_stats.get("num_binary", 0)
+    pred_bin = info.get("num_binary", 0)
+    if gt_bin > 0 or pred_bin > 0:
+        bin_score = _tolerance_score(pred_bin, gt_bin, rel_tol=0.3, abs_tol=0)
+        if (pred_bin == 0) != (gt_bin == 0):
+            bin_score = min(bin_score, 0.3)
+        score += bin_score * 0.10
+
+    # 5. Integer 变量数接近
+    gt_int = gt_stats.get("num_integer", 0)
+    pred_int = info.get("num_integer", 0)
+    if gt_int > 0 or pred_int > 0:
+        int_score = _tolerance_score(pred_int, gt_int, rel_tol=0.3, abs_tol=0)
+        if (pred_int == 0) != (gt_int == 0):
+            int_score = min(int_score, 0.3)
+        score += int_score * 0.10
+
+    # 6. 二次项匹配
+    if info["has_quadratic"] == gt_stats.get("has_quadratic", False):
+        score += 0.05
+
+    return min(score, 0.5)
 
 # ── 以下为兼容旧代码的函数 ──
 

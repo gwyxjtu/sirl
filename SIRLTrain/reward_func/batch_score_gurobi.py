@@ -24,7 +24,7 @@ import requests
 import json
 from collections import Counter
 from executor import PythonExecutor
-from content_utils import extract_code_block, extract_obj, lp_structure_reward
+from content_utils import extract_code_block, extract_obj, lp_structure_reward, parse_lp_structure
 
 # LP 文件输出目录（executor 子进程内可写）
 LP_OUTPUT_DIR = "/tmp/sirl_lp_outputs"
@@ -71,20 +71,25 @@ def format_reward(processed_str: str) -> float:
 
 def _compute_scores_batch(data_sources, solution_strs, ground_truths, extra_infos):
     """
-    批量计算每条样本的 reward。
+    批量计算每条样本的 reward，返回 list[dict]。
 
     新版流程:
         1. extract_code_block + insert_lp_generation → 执行代码
         2. 代码执行中产生 .lp 文件 + print objVal
-        3. answer_reward: 从 stdout 提取 objVal
+        3. answer_reward: 从 stdout 提取 objVal vs ground_truth
         4. code_reward: 代码是否跑通
         5. format_reward: <python> 标签是否完整
-        6. lp_reward: LP 文件结构验证
+        6. lp_reward: LP 结构对比 (有 gt_stats 时做 GT 对比，否则用启发式)
+
+    Returns:
+        list[dict]: 每条样本的详细打分，key 包含 score, ans_ok, code_ok,
+                    format_score, lp_score, pred_obj, exec_status,
+                    pred_n_vars, pred_n_cons, pred_n_bin, pred_n_int, pred_obj_type
     """
-    ans_score = 1.0
-    code_score = 1.0
-    format_score = 0.5
-    lp_score_weight = 0.5
+    ans_weight = 1.0
+    code_weight = 1.0
+    format_weight = 0.5
+    lp_weight = 0.5
 
     os.makedirs(LP_OUTPUT_DIR, exist_ok=True)
 
@@ -112,7 +117,43 @@ def _compute_scores_batch(data_sources, solution_strs, ground_truths, extra_info
     format_scores = [format_reward(solution_strs[i]) for i in range(len(solution_strs))]
     code_scores = [code_reward(code_excu_result[i]) for i in range(len(code_excu_result))]
     ans = [answer_reward(obj_result[i], ground_truths[i], code_excu_result[i]) for i in range(len(ground_truths))]
-    lp_scores = [lp_structure_reward(lp_paths[i]) for i in range(len(lp_paths))]
+
+    # LP 结构打分：优先用 GT 对比，否则用启发式
+    lp_scores = []
+    all_results = []
+    for i in range(len(solution_strs)):
+        gt_stats = None
+        if extra_infos and i < len(extra_infos) and extra_infos[i]:
+            gt_stats = extra_infos[i].get("lp_ref") if isinstance(extra_infos[i], dict) else None
+
+        lp_score = lp_structure_reward(lp_paths[i], gt_stats)
+        lp_scores.append(lp_score)
+
+        # 解析 pred LP 统计（用于 jsonl 日志）
+        pred_stats = parse_lp_structure(lp_paths[i]) if os.path.exists(lp_paths[i]) else {}
+
+        total = (
+            ans[i] * ans_weight +
+            format_scores[i] * format_weight +
+            code_scores[i] * code_weight +
+            lp_scores[i] * lp_weight
+        )
+
+        result_dict = {
+            "score": total,
+            "ans_ok": float(ans[i]),
+            "code_ok": float(code_scores[i]),
+            "format_score": format_scores[i],
+            "lp_score": lp_scores[i],
+            "pred_obj": obj_result[i] if obj_result[i] is not None else 0.0,
+            "exec_status": code_excu_result[i],
+            "pred_n_vars": pred_stats.get("num_variables", 0),
+            "pred_n_cons": pred_stats.get("num_constraints", 0),
+            "pred_n_bin": pred_stats.get("num_binary", 0),
+            "pred_n_int": pred_stats.get("num_integer", 0),
+            "pred_obj_type": pred_stats.get("objective_type", ""),
+        }
+        all_results.append(result_dict)
 
     # 清理 LP 文件
     for lp_path in lp_paths:
@@ -121,18 +162,7 @@ def _compute_scores_batch(data_sources, solution_strs, ground_truths, extra_info
         except OSError:
             pass
 
-    # 合成总分
-    scores = []
-    for i in range(len(solution_strs)):
-        total = (
-            ans[i] * ans_score +
-            format_scores[i] * format_score +
-            code_scores[i] * code_score +
-            lp_scores[i] * lp_score_weight
-        )
-        scores.append(total)
-
-    return scores
+    return all_results
 
 
 def compute_score(
@@ -147,13 +177,18 @@ def compute_score(
     extra_info=None,
     **kwargs,
 ):
-    """VeRL 0.8 naive: single-item kwargs; legacy batch: list arguments."""
+    """VeRL 0.8 naive: single-item kwargs; legacy batch: list arguments.
+
+    Returns:
+        dict | list[dict]: 单样本返回 dict (被 VeRL naive reward manager 拆成 reward_extra_info),
+                           批量返回 list[dict]
+    """
     if solution_str is not None:
-        rewards = _compute_scores_batch(
+        results = _compute_scores_batch(
             [data_source],
             [solution_str],
             [ground_truth],
             [extra_info or {}],
         )
-        return rewards[0]
+        return results[0]
     return _compute_scores_batch(data_sources, solution_strs, ground_truths, extra_infos)
