@@ -60,7 +60,13 @@ def extract_ref_code(output_text: str) -> Optional[str]:
     pattern = r"<python>(.*?)</python>"
     match = re.search(pattern, output_text, re.DOTALL)
     if match:
-        return match.group(1).strip()
+        code = match.group(1).strip()
+        # 处理 <python>```python...```</python> 嵌套 case
+        if "```" in code:
+            inner = re.search(r"```python(.*?)```", code, re.DOTALL)
+            if inner:
+                code = inner.group(1).strip()
+        return code
 
     # 尝试 ```python``` 代码块
     pattern = r"```python(.*?)```"

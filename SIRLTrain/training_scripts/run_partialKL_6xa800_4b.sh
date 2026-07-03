@@ -88,8 +88,8 @@ $PYTHON -m verl.trainer.partialKL_ppo \
  algorithm.adv_estimator=reinforce_plus_plus \
  algorithm.use_kl_in_reward=True \
  algorithm.kl_ctrl.kl_coef=0.0005 \
- data.train_files=$SIRL_DIR/trainset/gurobi_examples_OR_train_fixed.parquet \
- data.val_files=$SIRL_DIR/trainset/gurobi_examples_OR_test_fixed.parquet \
+ data.train_files=$SIRL_DIR/trainset/gurobi_examples_OR_train_shot.parquet \
+ data.val_files=$SIRL_DIR/trainset/gurobi_examples_OR_test_shot.parquet \
  data.train_max_samples=$TRAIN_MAX_SAMPLES \
  data.val_max_samples=$VAL_MAX_SAMPLES \
  data.train_batch_size=6 \
