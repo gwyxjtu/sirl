@@ -1,0 +1,7 @@
+R1_identity=PASS
+R2_bad_or_missing=FAIL
+R3_none_fields=PASS
+R4_scale_L2=PASS
+R5_permute_L2=PASS
+R6_bounds=PASS
+R7_exec_fail=PASS

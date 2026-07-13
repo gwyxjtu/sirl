@@ -4,6 +4,15 @@ import textwrap
 import os
 import uuid
 
+# 全局静音 Gurobi 默认环境的日志输出（"Read LP format model" / solve log 等）。
+# RewardLoopWorker 的 stdout 走 Ray 管道，Gurobi 巨量 C 层输出会写满管道
+# 导致 write() 永久阻塞（fork 子进程继承该设置，同样静音）。
+try:
+    import gurobipy as _gp
+    _gp.setParam('OutputFlag', 0)
+except Exception:
+    pass
+
 # ---------------------------------------
 # 提取代码块的函数
 # ---------------------------------------
@@ -70,7 +79,9 @@ def insert_lp_generation(code: str, output_name: str, skip_optimize: bool = Fals
                 f"{indent}else:\n"
                 f"{indent}    print('No optimal solution found, status:', {model_name}.status)"
             )
-            code = re.sub(pattern, rf'\1\2\n{status_check}', code, flags=re.M)
+            # setParam 放在原始 optimize() 之前，两次求解的日志都被静音
+            quiet_line = f"{indent}{model_name}.setParam('OutputFlag', 0)"
+            code = re.sub(pattern, rf'{quiet_line}\n\1\2\n{status_check}', code, flags=re.M)
     return code
 
 def extract_code_block(llm_output: str, solver_name, lp_output_path: str = None) -> str:
@@ -170,7 +181,9 @@ def parse_lp_structure(lp_path: str) -> dict:
     if not os.path.exists(lp_path):
         return result
 
-    with open(lp_path) as f:
+    # errors='replace'：LP 文件可能含非 UTF-8 字节（模型生成的变量名等），
+    # 严格解码曾在 2026-07-13 step14 直接炸掉整个训练
+    with open(lp_path, encoding='utf-8', errors='replace') as f:
         lines = f.readlines()
     result["raw_lines"] = lines
 
@@ -287,8 +300,7 @@ def extract_lp_stats_from_code(reference_code: str, lp_path: str | None = None, 
             return None
 
         stats = parse_lp_structure(lp_path)
-        # 只保留轻量统计字段（不含 raw_lines）
-        return {
+        extended = {
             "objective_type": stats["objective_type"],
             "num_variables": stats["num_variables"],
             "num_constraints": stats["num_constraints"],
@@ -296,6 +308,29 @@ def extract_lp_stats_from_code(reference_code: str, lp_path: str | None = None, 
             "num_integer": stats["num_integer"],
             "has_quadratic": stats["has_quadratic"],
         }
+
+        # ── 提取系数矩阵 (L2) ──
+        mat = extract_coefficient_matrix(lp_path)
+        if mat is not None:
+            # 稀疏矩阵序列化: 存 (row, col, data) 三元组
+            A_coo = mat["A"].tocoo()
+            extended["coeff_A"] = {
+                "shape": [int(A_coo.shape[0]), int(A_coo.shape[1])],
+                "rows": [int(r) for r in A_coo.row],
+                "cols": [int(c) for c in A_coo.col],
+                "data": [float(d) for d in A_coo.data],
+            }
+            extended["coeff_b"] = [float(x) for x in mat["b"]]
+
+        # ── 计算 GT 扰动响应 (L4) ──
+        try:
+            pert = _compute_gt_perturbation(lp_path)
+            if pert is not None:
+                extended["perturbation"] = [float(x) for x in pert]
+        except Exception:
+            pass
+
+        return extended
     except Exception:
         return None
     finally:
@@ -306,8 +341,20 @@ def extract_lp_stats_from_code(reference_code: str, lp_path: str | None = None, 
                 pass
 
 
+def _coerce_int(value, default: int = 0) -> int:
+    """Coerce None / missing stats to a safe int for L1 comparisons."""
+    if value is None:
+        return default
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
 def _within_tolerance(pred: int, gt: int, rel_tol: float = 0.3, abs_tol: int = 2) -> bool:
     """检查 pred 是否在 gt 的容差范围内: |pred - gt| <= max(abs_tol, rel_tol * gt)"""
+    pred = _coerce_int(pred)
+    gt = _coerce_int(gt)
     threshold = max(abs_tol, int(rel_tol * gt))
     return abs(pred - gt) <= threshold
 
@@ -321,6 +368,8 @@ def _tolerance_score(pred: int, gt: int, rel_tol: float = 0.3, abs_tol: int = 2)
 
     特殊处理: 当 GT=0 时（不需要该类型变量），pred=0 给满分，pred>0 线性递减。
     """
+    pred = _coerce_int(pred)
+    gt = _coerce_int(gt)
     deviation = abs(pred - gt)
 
     # GT 为 0: 期望 pred 也为 0
@@ -355,7 +404,7 @@ def lp_structure_reward(lp_path: str, gt_stats: dict | None = None) -> float:
         - 目标函数类型一致 (Min/Max):                           +0.05
         - 变量数接近 (容差 max(2, 30%)):                        +0.10
         - 约束数接近 (容差 max(2, 30%)):                        +0.10
-        - Binary 变量数接近 (容差 max(1, 20%)):                 +0.10
+        - Binary 变量数接近 (容差 max(1, 20%)):                 +0.15
         - Integer 变量数接近 (容差 max(1, 20%)):                +0.10
         - 二次项匹配:                                           +0.05
 
@@ -377,6 +426,9 @@ def lp_structure_reward(lp_path: str, gt_stats: dict | None = None) -> float:
         return 0.0
 
     info = parse_lp_structure(lp_path)
+    # 无法解析出任何结构（坏文件/空文件）时直接 0，避免 has_quadratic 等默认匹配误给分
+    if not info.get("objective_type") and info.get("num_variables", 0) == 0 and info.get("num_constraints", 0) == 0:
+        return 0.0
 
     if gt_stats is None:
         # ── 旧版启发式打分（向后兼容）──
@@ -402,25 +454,26 @@ def lp_structure_reward(lp_path: str, gt_stats: dict | None = None) -> float:
         score += 0.05
 
     # 2. 变量数接近
-    gt_vars = gt_stats.get("num_variables", 0)
+    gt_vars = _coerce_int(gt_stats.get("num_variables"))
     score += _tolerance_score(info["num_variables"], gt_vars, rel_tol=0.3, abs_tol=2) * 0.10
 
     # 3. 约束数接近
-    gt_cons = gt_stats.get("num_constraints", 0)
+    gt_cons = _coerce_int(gt_stats.get("num_constraints"))
     score += _tolerance_score(info["num_constraints"], gt_cons, rel_tol=0.3, abs_tol=2) * 0.10
 
     # 4. Binary 变量数接近（严格：若一方为 0 则最多 0.3 分）
-    gt_bin = gt_stats.get("num_binary", 0)
-    pred_bin = info.get("num_binary", 0)
+    # Mini ablation: binary sub-weight 0.10 → 0.15 (MIP / IndustryOR-style signal).
+    gt_bin = _coerce_int(gt_stats.get("num_binary"))
+    pred_bin = _coerce_int(info.get("num_binary"))
     if gt_bin > 0 or pred_bin > 0:
         bin_score = _tolerance_score(pred_bin, gt_bin, rel_tol=0.3, abs_tol=0)
         if (pred_bin == 0) != (gt_bin == 0):
             bin_score = min(bin_score, 0.3)
-        score += bin_score * 0.10
+        score += bin_score * 0.15
 
     # 5. Integer 变量数接近
-    gt_int = gt_stats.get("num_integer", 0)
-    pred_int = info.get("num_integer", 0)
+    gt_int = _coerce_int(gt_stats.get("num_integer"))
+    pred_int = _coerce_int(info.get("num_integer"))
     if gt_int > 0 or pred_int > 0:
         int_score = _tolerance_score(pred_int, gt_int, rel_tol=0.3, abs_tol=0)
         if (pred_int == 0) != (gt_int == 0):
@@ -428,10 +481,267 @@ def lp_structure_reward(lp_path: str, gt_stats: dict | None = None) -> float:
         score += int_score * 0.10
 
     # 6. 二次项匹配
-    if info["has_quadratic"] == gt_stats.get("has_quadratic", False):
+    if info["has_quadratic"] == bool(gt_stats.get("has_quadratic", False)):
         score += 0.05
 
+    # 7. 增广主角 (L2)
+    # GT 系数矩阵在 lp_ref 中是序列化 dict，需要反序列化
+    try:
+        mat = extract_coefficient_matrix(lp_path)
+        gt_A_raw = gt_stats.get("coeff_A")
+        gt_b_raw = gt_stats.get("coeff_b")
+        if mat is not None and gt_A_raw is not None and gt_b_raw is not None:
+            gt_A = _deserialize_coeff_matrix(gt_A_raw) if isinstance(gt_A_raw, dict) else gt_A_raw
+            if gt_A is not None:
+                pa_score = _principal_angle_score(mat["A"], mat["b"], gt_A, gt_b_raw)
+                score += pa_score * 0.15
+    except Exception:
+        pass   # GP LP 格式不标准或含 None 值，跳过 L2
+
+    # 8. 扰动响应 (L4)
+    gt_pert = gt_stats.get("perturbation")
+    if gt_pert is not None and len(gt_pert) > 0:
+        try:
+            pert_score = _perturbation_score(lp_path, gt_pert)
+            score += pert_score * 0.10
+        except Exception:
+            pass   # 扰动求解失败，跳过 L4
+
     return min(score, 0.5)
+
+
+# ── 系数矩阵提取（使用 Gurobi API）──
+
+def extract_coefficient_matrix(lp_path: str):
+    """
+    使用 gurobipy.read() 从 LP 文件中提取系数矩阵和相关向量。
+
+    返回 None（若 LP 无效或 Gurobi 不可用），否则返回 dict:
+        A: sparse CSR matrix (n_constrs × n_vars)
+        b: RHS vector (n_constrs,)
+        c: objective coefficient vector (n_vars,)
+        sense: constraint sense list ('<', '>', '=')
+        vtype: variable type list ('C'=continuous, 'B'=binary, 'I'=integer)
+        n_vars: int
+        n_constrs: int
+    """
+    try:
+        from gurobipy import read as grb_read
+        m = grb_read(lp_path)
+    except Exception:
+        return None
+
+    try:
+        A = m.getA()                                                    # sparse CSR
+        n_constrs, n_vars = A.shape
+        b = m.getAttr("RHS", m.getConstrs())
+        c = m.getAttr("Obj", m.getVars())
+        sense = m.getAttr("Sense", m.getConstrs())
+        vtype = m.getAttr("VType", m.getVars())
+
+        return {
+            "A": A,
+            "b": b,
+            "c": c,
+            "sense": sense,
+            "vtype": vtype,
+            "n_vars": n_vars,
+            "n_constrs": n_constrs,
+        }
+    except Exception:
+        return None
+
+
+def _normalize_rows(A_sparse, b):
+    """对增广矩阵 [A, -b] 的每一行做 L2 归一化，消除约束缩放歧义。"""
+    import numpy as np
+    from scipy.sparse import csr_matrix
+
+    n_constrs = A_sparse.shape[0]
+    A_dense = np.array(A_sparse.todense())
+    b_arr = np.array(b).reshape(-1, 1)
+    aug = np.hstack([A_dense, -b_arr])
+
+    norms = np.linalg.norm(aug, axis=1, keepdims=True)
+    norms[norms < 1e-10] = 1.0   # 避免除零
+    aug_normalized = aug / norms
+
+    return aug_normalized
+
+
+def _principal_angle_score(A_pred, b_pred, A_gt, b_gt):
+    """
+    计算增广主角得分。
+
+    A_pred, A_gt: sparse CSR matrices
+    b_pred, b_gt: RHS 向量
+
+    返回 float in [0,1]，1表示行空间完全对齐
+    """
+    import numpy as np
+
+    # 归一化增广矩阵
+    aug_pred = _normalize_rows(A_pred, b_pred)
+    aug_gt   = _normalize_rows(A_gt, b_gt)
+
+    # 确保列数一致（变量数不同时用零列补齐）
+    max_cols = max(aug_pred.shape[1], aug_gt.shape[1])
+    if aug_pred.shape[1] < max_cols:
+        aug_pred = np.hstack([aug_pred, np.zeros((aug_pred.shape[0], max_cols - aug_pred.shape[1]))])
+    if aug_gt.shape[1] < max_cols:
+        aug_gt = np.hstack([aug_gt, np.zeros((aug_gt.shape[0], max_cols - aug_gt.shape[1]))])
+
+    # SVD 截断取行空间基
+    k = min(aug_pred.shape[0], aug_pred.shape[1], 10)
+    try:
+        _, _, Vt_pred = np.linalg.svd(aug_pred, full_matrices=False)
+        _, _, Vt_gt   = np.linalg.svd(aug_gt, full_matrices=False)
+    except np.linalg.LinAlgError:
+        return 0.0
+
+    U_pred = Vt_pred[:k, :].T    # 列是行空间标准正交基
+    U_gt   = Vt_gt[:k, :].T
+
+    # 跨投影矩阵的奇异值 = cos(θ_k)
+    cross = U_pred.T @ U_gt
+    try:
+        singular_vals = np.linalg.svd(cross, compute_uv=False)
+    except np.linalg.LinAlgError:
+        return 0.0
+
+    cos2_sum = np.sum(np.clip(np.square(singular_vals), 0, 1))
+    score = cos2_sum / min(k, len(singular_vals))
+
+    return max(0.0, min(1.0, score))
+
+
+# ── 扰动响应 ──
+
+def _perturbation_score(lp_path: str, gt_perturbation: list | None) -> float:
+    """
+    通过对目标函数系数做微小扰动，比较灵敏度。
+
+    gt_perturbation: GT 的灵敏度向量 [Δ₁, Δ₂, Δ₃]（离线预计算存入 lp_ref）。
+    若未提供，返回 0.0。
+
+    返回 float in [0,1]
+    """
+    if gt_perturbation is None:
+        return 0.0
+
+    try:
+        from gurobipy import read as grb_read, GRB
+        m = grb_read(lp_path)
+        # 必须限时：此处求解跑在 RewardLoopWorker 主进程，没有 executor 的
+        # 超时保护，病态 MIP 无限求解会卡死整个训练流水线
+        m.setParam('TimeLimit', 10)
+        m.setParam('OutputFlag', 0)
+    except Exception:
+        return 0.0
+
+    n_vars = m.NumVars
+    if n_vars == 0:
+        return 0.0
+
+    # 获取当前目标系数
+    obj_orig = m.getAttr("Obj", m.getVars())
+
+    # 记录原始 objVal（如果可以求解）
+    try:
+        m.optimize()
+        if m.Status == GRB.OPTIMAL:
+            obj_orig_val = m.ObjVal
+        else:
+            return 0.0
+    except Exception:
+        return 0.0
+
+    # 3 个正交扰动方向
+    delta = 0.02  # 2% 相对扰动
+    pred_deltas = []
+    for dim in range(min(3, n_vars)):
+        try:
+            mc = m.copy()
+            mc.setParam('TimeLimit', 10)
+            mc.setParam('OutputFlag', 0)
+            # 对第 dim 个变量的目标系数加扰动
+            mc.getVars()[dim].Obj = obj_orig[dim] * (1.0 + delta)
+            mc.optimize()
+            if mc.Status == GRB.OPTIMAL:
+                delta_val = (mc.ObjVal - obj_orig_val) / (delta * abs(obj_orig[dim]) + 1e-8)
+                pred_deltas.append(delta_val)
+            else:
+                pred_deltas.append(0.0)
+            mc.dispose()
+        except Exception:
+            pred_deltas.append(0.0)
+
+    if len(pred_deltas) == 0:
+        return 0.0
+
+    # 与 GT 灵敏度比较
+    gt_deltas = gt_perturbation[:len(pred_deltas)]
+    errors = [abs(p - g) / (abs(g) + 1e-8) for p, g in zip(pred_deltas, gt_deltas)]
+    score = max(0.0, 1.0 - sum(errors) / len(errors))
+    return min(1.0, score)
+
+
+def _compute_gt_perturbation(lp_path: str):
+    """计算 GT 模型的扰动响应向量（离线预处理用）。"""
+    try:
+        from gurobipy import read as grb_read, GRB
+        m = grb_read(lp_path)
+    except Exception:
+        return None
+
+    n_vars = m.NumVars
+    if n_vars == 0:
+        return None
+
+    obj_coeffs = m.getAttr("Obj", m.getVars())
+    try:
+        m.optimize()
+        if m.Status != GRB.OPTIMAL:
+            return None
+        obj_orig = m.ObjVal
+    except Exception:
+        return None
+
+    delta = 0.02
+    deltas = []
+    for dim in range(min(3, n_vars)):
+        if abs(obj_coeffs[dim]) < 1e-8:
+            deltas.append(0.0)
+            continue
+        try:
+            mc = m.copy()
+            mc.getVars()[dim].Obj = obj_coeffs[dim] * (1.0 + delta)
+            mc.optimize()
+            if mc.Status == GRB.OPTIMAL:
+                d_val = (mc.ObjVal - obj_orig) / (delta * abs(obj_coeffs[dim]))
+                deltas.append(d_val)
+            else:
+                deltas.append(0.0)
+            mc.dispose()
+        except Exception:
+            deltas.append(0.0)
+    m.dispose()
+    return deltas
+
+
+def _deserialize_coeff_matrix(coeff_A_dict):
+    """从序列化的 dict 恢复 scipy.sparse.csr_matrix。"""
+    try:
+        from scipy.sparse import csr_matrix
+        import numpy as np
+        shape = tuple(coeff_A_dict["shape"])
+        data = np.array(coeff_A_dict["data"], dtype=float)
+        row = np.array(coeff_A_dict["rows"], dtype=int)
+        col = np.array(coeff_A_dict["cols"], dtype=int)
+        return csr_matrix((data, (row, col)), shape=shape)
+    except Exception:
+        return None
+
 
 # ── 以下为兼容旧代码的函数 ──
 

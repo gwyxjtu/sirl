@@ -125,8 +125,8 @@ class PythonExecutor:
                     all_exec_results.append(("", "Timeout Error"))
                     timeout_cnt += 1
                 except Exception as error:
-                    #print(error)
-                    exit()
+                    # 不能 exit()：单个子进程异常（如 ProcessExpired）不应终止整个 reward 计算
+                    all_exec_results.append(("", f"ExecutorError: {error}"))
                 if progress_bar is not None:
                     progress_bar.update(1)
 
@@ -135,15 +135,13 @@ class PythonExecutor:
         batch_obj = []
         batch_sol = []
         batch_report = []
-        print('finish compute')
         for code, (res, report) in zip(all_code_snippets, all_exec_results):
             res, report = str(res).strip(), str(report).strip()
             batch_obj.append(extract_obj(res))
             sol = extract_sol(res)
             batch_sol.append(sol)
             batch_report.append(report)
-        print('finish append')
-        print("\n\nbatch_obj",batch_obj)
-        print("\n\nbatch_report",batch_report)
+        # 注意：不要在这里 print 大批量结果——RewardLoopWorker 的 stdout 走 Ray 管道，
+        # 巨量输出会写满管道导致 write() 永久阻塞（2026-07-13 5h 死锁事故根因）。
         return batch_obj, batch_sol, batch_report
 

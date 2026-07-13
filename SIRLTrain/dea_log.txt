@@ -1,0 +1,47 @@
+
+Gurobi 13.0.2 (linux64) logging started Sun Jul 12 20:13:53 2026
+
+Set parameter LogFile to value "dea_log.txt"
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (linux64 - "Ubuntu 22.04.5 LTS")
+
+CPU model: Intel(R) Xeon(R) Gold 6348 CPU @ 2.60GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 56 physical cores, 112 logical processors, using up to 32 threads
+
+Academic license 708443 - for non-commercial use only - registered to gg___@vip.qq.com
+Optimize a model with 10 rows, 5 columns and 40 nonzeros (Max)
+Model fingerprint: 0xa7add683
+Model has 5 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [3e+02, 6e+02]
+  Objective range  [3e+02, 3e+02]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [0e+00, 0e+00]
+
+Presolve removed 10 rows and 5 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0   -0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds (0.00 work units)
+Optimal objective -0.000000000e+00
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (linux64 - "Ubuntu 22.04.5 LTS")
+
+CPU model: Intel(R) Xeon(R) Gold 6348 CPU @ 2.60GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 56 physical cores, 112 logical processors, using up to 32 threads
+
+Academic license 708443 - for non-commercial use only - registered to gg___@vip.qq.com
+Optimize a model with 10 rows, 5 columns and 40 nonzeros (Max)
+Model has 5 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [3e+02, 6e+02]
+  Objective range  [3e+02, 3e+02]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [0e+00, 0e+00]
+
+
+Solved in 0 iterations and 0.00 seconds (0.00 work units)
+Optimal objective -0.000000000e+00
+
+Gurobi 13.0.2 (linux64) logging started Mon Jul 13 13:32:30 2026
+
