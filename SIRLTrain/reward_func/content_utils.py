@@ -79,8 +79,9 @@ def insert_lp_generation(code: str, output_name: str, skip_optimize: bool = Fals
                 f"{indent}else:\n"
                 f"{indent}    print('No optimal solution found, status:', {model_name}.status)"
             )
-            # setParam 放在原始 optimize() 之前，两次求解的日志都被静音
-            quiet_line = f"{indent}{model_name}.setParam('OutputFlag', 0)"
+            # setParam 放在原始 optimize() 之前：静音 + 60s 限时（防止病态 MIP
+            # 无限求解拖死 reward 线程——纯 Python timeout 对 Gurobi C 层无效）
+            quiet_line = f"{indent}{model_name}.setParam('OutputFlag', 0)\n{indent}{model_name}.setParam('TimeLimit', 60)"
             code = re.sub(pattern, rf'{quiet_line}\n\1\2\n{status_check}', code, flags=re.M)
     return code
 

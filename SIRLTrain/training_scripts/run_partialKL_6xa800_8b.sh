@@ -99,8 +99,8 @@ if [[ "$NGPU" -lt 6 ]]; then
   exit 1
 fi
 AVAIL_G=$(df -BG /root/autodl-tmp | awk 'NR==2{gsub(/G/,"",$4); print $4}')
-if [[ "${AVAIL_G:-0}" -lt 35 ]]; then
-  echo "ERROR: /root/autodl-tmp free ${AVAIL_G}G < 35G (need headroom for ~16G ckpt peak)."
+if [[ "${AVAIL_G:-0}" -lt 28 ]]; then
+  echo "ERROR: /root/autodl-tmp free ${AVAIL_G}G < 28G (need headroom for ~16G ckpt peak)."
   exit 1
 fi
 echo "=== Preflight OK: ${NGPU} GPUs, ${AVAIL_G}G free, SAVE_FREQ=${SAVE_FREQ}, keep=${MAX_ACTOR_CKPT_TO_KEEP} ==="
@@ -186,4 +186,5 @@ $PYTHON -m verl.trainer.partialKL_ppo \
  trainer.default_local_dir=$output_dir \
  trainer.rollout_data_dir=$output_dir/rollouts \
  trainer.validation_data_dir=$output_dir/val_rollouts \
+ trainer.resume_mode=${RESUME_MODE:-disable} \
  trainer.total_epochs=$TOTAL_EPOCHS 2>&1 | tee "$output_dir/train.log"

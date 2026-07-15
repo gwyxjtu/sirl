@@ -6,19 +6,10 @@ import traceback
 import copy
 import datetime
 import dateutil.relativedelta
-import multiprocess
-from multiprocess import Pool
 from typing import Any, Dict, Optional
-from pebble import ProcessPool
 from tqdm import tqdm
-from concurrent.futures import TimeoutError
-from functools import partial
-from timeout_decorator import timeout
-from contextlib import redirect_stdout
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import json
+from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeoutError
 from content_utils import extract_obj, extract_sol
-import urllib.parse
 
 
 class GenericRuntime:
@@ -73,20 +64,38 @@ class PythonExecutor:
 
     @staticmethod
     def execute(code, runtime=None, timeout_length=150):
+        """Run one code snippet. timeout_length kept for API compat; wall timeout is at batch_apply.
+
+        Do NOT use signal-based timeout_decorator here: RewardLoopWorker is multithreaded,
+        and SIGALRM only works in the main thread. Solver hangs are bounded by Gurobi TimeLimit.
+
+        Do NOT use redirect_stdout: it mutates process-global sys.stdout and races under threads.
+        Capture via a per-runtime print() injected into exec globals instead.
+        """
+        import builtins
         try:
+            if runtime is None:
+                runtime = GenericRuntime()
+            if not code:
+                return "", "Empty code"
             program_io = io.StringIO()
-            with redirect_stdout(program_io):
-                timeout(timeout_length)(runtime.exec_code)("\n".join(code))
+
+            def _capture_print(*args, **kwargs):
+                kwargs.pop("file", None)
+                builtins.print(*args, file=program_io, **kwargs)
+
+            runtime.inject({"print": _capture_print})
+            runtime.exec_code("\n".join(code))
             program_io.seek(0)
             result = program_io.read()
             if result == "":
-                timeout(timeout_length)(runtime.exec_code)(code[:-1])
-                result = timeout(timeout_length)(runtime.eval_code)(code[-1])
+                runtime.exec_code("\n".join(code[:-1]))
+                result = runtime.eval_code(code[-1])
             report = "Done"
             str(result)
             if result is not None:
                 pickle.dumps(result)  # Serialization check
-        except:
+        except Exception:
             result = ""
             report = traceback.format_exc().split("\n")[-2]
         return result, report
@@ -102,36 +111,54 @@ class PythonExecutor:
         return s
 
     def batch_apply(self, batch_code):
+        """Execute codes in a thread pool (no fork).
+
+        Replaces pebble ProcessPool: forking from Ray's multithreaded RewardLoopWorker
+        caused zombie children and permanent pool.join() hangs.
+        """
         all_code_snippets = self.process_generation_to_code(batch_code)
-        timeout_cnt = 0
-        all_exec_results = []
-        with ProcessPool(max_workers=min(len(all_code_snippets), os.cpu_count()//4)) as pool:
-            executor = partial(self.execute, runtime=self.runtime, timeout_length=self.timeout_length)
-            future = pool.map(executor, all_code_snippets, timeout=self.timeout_length)
-            iterator = future.result()
+        n = len(all_code_snippets)
+        all_exec_results = [("", "Timeout Error")] * n
 
-            if len(all_code_snippets) > 100:
-                progress_bar = tqdm(total=len(all_code_snippets), desc="Execute")
-            else:
-                progress_bar = None
+        # Cover Gurobi TimeLimit=60 + Python overhead; ignore tiny default timeout_length=5
+        wall_timeout = max(int(self.timeout_length), 75)
+        max_workers = max(1, min(n, max(1, (os.cpu_count() or 4) // 4)))
 
-            while True:
-                try:
-                    result = next(iterator)
-                    all_exec_results.append(result)
-                except StopIteration:
-                    break
-                except TimeoutError:
-                    all_exec_results.append(("", "Timeout Error"))
-                    timeout_cnt += 1
-                except Exception as error:
-                    # 不能 exit()：单个子进程异常（如 ProcessExpired）不应终止整个 reward 计算
-                    all_exec_results.append(("", f"ExecutorError: {error}"))
-                if progress_bar is not None:
-                    progress_bar.update(1)
+        def _run_one(idx_code):
+            idx, code = idx_code
+            # Fresh runtime per task — shared GenericRuntime would race across threads
+            runtime = type(self.runtime)()
+            return idx, self.execute(code, runtime=runtime, timeout_length=wall_timeout)
 
+        progress_bar = tqdm(total=n, desc="Execute") if n > 100 else None
+        pool = ThreadPoolExecutor(max_workers=max_workers)
+        try:
+            future_to_idx = {
+                pool.submit(_run_one, (i, code)): i
+                for i, code in enumerate(all_code_snippets)
+            }
+            try:
+                for fut in as_completed(future_to_idx, timeout=wall_timeout * max(1, (n + max_workers - 1) // max_workers)):
+                    idx = future_to_idx[fut]
+                    try:
+                        _, result = fut.result(timeout=0)
+                        all_exec_results[idx] = result
+                    except Exception as error:
+                        all_exec_results[idx] = ("", f"ExecutorError: {error}")
+                    if progress_bar is not None:
+                        progress_bar.update(1)
+            except FuturesTimeoutError:
+                for fut, idx in future_to_idx.items():
+                    if not fut.done():
+                        all_exec_results[idx] = ("", "Timeout Error")
+                        if progress_bar is not None:
+                            progress_bar.update(1)
+        finally:
             if progress_bar is not None:
                 progress_bar.close()
+            # wait=False: never block reward on a stuck worker thread
+            pool.shutdown(wait=False, cancel_futures=True)
+
         batch_obj = []
         batch_sol = []
         batch_report = []
