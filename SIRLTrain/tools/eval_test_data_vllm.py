@@ -4,6 +4,10 @@
 Default prompt matches SIRL training `_shot` parquet: python-only + KEY GUROBI
 RULES, no <think>/<model>. Optional --repair_rounds feeds execution errors back
 to the model for one or more correction attempts.
+
+Also records SIRL structure metrics (format_score / lp_score / pred_* counts)
+via tools/structure_eval_utils.py. Optional --lp_ref_dir supplies GT lp_ref
+sidecars for gt-mode lp_score; without it, heuristic lp_score is still saved.
 """
 
 from __future__ import annotations
@@ -41,6 +45,14 @@ sys.path.insert(0, str(SIRL_DIR / "tools"))
 
 from fix_prompts import DEFAULT_USER_TEMPLATE  # noqa: E402
 from rule_prompt_utils import gurobi_prompt_temp  # noqa: E402
+from structure_eval_utils import (  # noqa: E402
+    STRUCTURE_SCALAR_KEYS,
+    aggregate_structure_metrics,
+    load_lp_ref_index,
+    lookup_gt_stats,
+    resolve_lp_ref_path,
+    score_output_structure,
+)
 from utils import (  # noqa: E402
     change_variable_types,
     extract_code_block,
@@ -446,6 +458,23 @@ def main():
         default=1.0,
         help="Nucleus sampling; official SIRL README uses 0.95",
     )
+    parser.add_argument(
+        "--score_structure",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Score/save lp_score + pred structure fields (default: on)",
+    )
+    parser.add_argument(
+        "--lp_ref_dir",
+        default="",
+        help="Optional dir of {dataset}.jsonl sidecars with per-item lp_ref for gt-mode lp_score",
+    )
+    parser.add_argument(
+        "--structure_timeout",
+        type=int,
+        default=60,
+        help="Timeout (s) for LP-write subprocess used by structure scoring",
+    )
     args = parser.parse_args()
 
     out_dir = Path(args.out_dir)
@@ -460,6 +489,7 @@ def main():
     log(f"model={args.model_path}")
     log(f"prompt={args.prompt}")
     log(f"repair_rounds={args.repair_rounds} repair_on_infeasible={args.repair_on_infeasible}")
+    log(f"score_structure={args.score_structure} lp_ref_dir={args.lp_ref_dir or '(none)'}")
     log(f"datasets={args.datasets}")
     log(f"Loading vLLM tp={args.tp} ...")
     t0 = time.time()
@@ -487,6 +517,8 @@ def main():
         "prompt": args.prompt,
         "repair_rounds": args.repair_rounds,
         "repair_on_infeasible": args.repair_on_infeasible,
+        "score_structure": args.score_structure,
+        "lp_ref_dir": args.lp_ref_dir or None,
         "datasets": {},
     }
 
@@ -502,6 +534,15 @@ def main():
             continue
         data = load_dataset(path)
         log(f"loaded n={len(data)}")
+
+        lp_ref_index: dict = {}
+        if args.score_structure and args.lp_ref_dir:
+            ref_path = resolve_lp_ref_path(args.lp_ref_dir, name)
+            if ref_path is not None:
+                lp_ref_index = load_lp_ref_index(ref_path)
+                log(f"lp_ref sidecar: {ref_path} ({len(lp_ref_index)} keys)")
+            else:
+                log(f"lp_ref sidecar: not found under {args.lp_ref_dir} for {name}")
 
         prompts = [build_prompt(tokenizer, item, args.prompt) for item in data]
         outputs = model.generate(prompts, sampling)
@@ -557,6 +598,15 @@ def main():
                 "en_answer": item.get("en_answer"),
                 "repair_round": repair_used[idx],
             }
+            if args.score_structure:
+                gt_stats = lookup_gt_stats(item, idx, lp_ref_index)
+                struct = score_output_structure(
+                    text,
+                    gt_stats=gt_stats,
+                    status=status,
+                    timeout=args.structure_timeout,
+                )
+                rec.update(struct)
             records.append(rec)
             with (ds_dir / f"{idx:04d}.json").open("w", encoding="utf-8") as f:
                 json.dump(
@@ -590,14 +640,28 @@ def main():
             "repair_attempted": n_repaired,
             "repair_became_pass": n_repaired_pass,
         }
+        if args.score_structure:
+            ds_summary.update(aggregate_structure_metrics(records))
+            # Keep pass@1 as source of truth for answer accuracy; ans_ok_rate
+            # should match when status mapping is used.
+            ds_summary["structure_keys"] = list(STRUCTURE_SCALAR_KEYS)
         summary["datasets"][name] = ds_summary
         with (ds_dir / "summary.json").open("w", encoding="utf-8") as f:
             json.dump({"records": records, **ds_summary}, f, indent=2, ensure_ascii=False)
 
+        struct_msg = ""
+        if args.score_structure:
+            struct_msg = (
+                f" ans_ok={ds_summary.get('ans_ok_rate', 0):.4f}"
+                f" code_ok={ds_summary.get('code_ok_rate', 0):.4f}"
+                f" lp={ds_summary.get('lp_score_mean', 0):.4f}"
+                f" lp_gt_n={ds_summary.get('lp_score_gt_n', 0)}"
+            )
         log(
             f"{name}: pass@1={pass1:.4f} ({counts[1]}/{n}) "
             f"fail={counts[0]} no_code={counts[2]} exec_err={counts[3]} "
             f"repair_tried={n_repaired} repair_pass={n_repaired_pass}"
+            f"{struct_msg}"
         )
 
     with (out_dir / "summary.json").open("w", encoding="utf-8") as f:
